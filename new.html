@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>新規登録</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="newPage">
+
+<h1>新規登録</h1>
+
+<p>コース</p>
+
+<select id="courseInput">
+    <option>堺コース</option>
+    <option>和泉コース</option>
+    <option>岸和田コース</option>
+    <option>八尾コース</option>
+    <option>奈良北コース</option>
+    <option>奈良南コース</option>
+</select>
+
+<br><br>
+
+<p>市</p>
+
+<select id="cityInput" onchange="updateTownList()">
+
+    <option>奈良市</option>
+    <option>大和郡山市</option>
+    <option>天理市</option>
+    <option>生駒市</option>
+
+</select>
+
+<br><br>
+
+<p>町</p>
+
+<select id="townInput">
+
+    <option>池之内町</option>
+    <option>小泉町</option>
+    <option>城町</option>
+    <option>田中町</option>
+    <option>西田中町</option>
+    <option>満願寺町</option>
+    <option>山田町</option>
+    <option>その他</option>
+
+</select>
+
+<br><br>
+
+<p>住所</p>
+<input id="addressInput"
+       class="addressInput">
+<br><br>
+
+<p>配送先メモ</p>
+<textarea id="memoInput"
+          class="memoInput"></textarea>
+<br><br>
+
+<p>キーボックス</p>
+<input id="keyboxInput"
+       class="keyboxInput">
+<br><br>
+
+<button class="confirmButton" onclick="saveNewDestination()">
+    ☐確認
+</button>
+<br><br>
+
+<button class="backButton" onclick="location.href='index.html'">
+    🔙戻る
+</button>
+
+<script src="towndata.js"></script>
+
+<script>
+
+function updateTownList() {
+
+    const city =
+        document.getElementById("cityInput").value;
+
+    const townSelect =
+        document.getElementById("townInput");
+
+    townSelect.innerHTML = "";
+
+    townData[city].forEach(function(town) {
+
+        townSelect.innerHTML += `
+            <option>${town}</option>
+        `;
+
+    });
+
+}
+
+function saveNewDestination() {
+    const address = document.getElementById("addressInput").value;
+    const memo = document.getElementById("memoInput").value;
+    const keybox = document.getElementById("keyboxInput").value;
+    const course = document.getElementById("courseInput").value;
+    const city = document.getElementById("cityInput").value;
+    const town = document.getElementById("townInput").value;
+
+    // 今までの配送先一覧を取得
+    const deliveries =
+        JSON.parse(localStorage.getItem("deliveries")) || [];
+
+    // 次のIDを決める
+    const nextId =
+        deliveries.length > 0
+            ? deliveries[deliveries.length - 1].id + 1
+            : 1;
+
+    // 新しい配送先を作る
+const newDelivery = {
+    id: nextId,
+    course: course,
+    city: city,
+    town: town,
+    address: address,
+    memo: memo,
+    keybox: keybox
+};
+
+// 確認画面用に一時保存
+localStorage.setItem(
+    "pendingDelivery",
+    JSON.stringify(newDelivery)
+);
+
+localStorage.setItem("lastCourse", course);
+localStorage.setItem("lastCity", city);
+
+localStorage.setItem("fromNew", "true");
+
+location.href = "confirm.html";
+
+}
+
+const lastCourse =
+    localStorage.getItem("lastCourse");
+
+if (lastCourse) {
+
+    document.getElementById("courseInput").value =
+        lastCourse;
+
+}
+
+updateTownList();
+
+const lastCity =
+    localStorage.getItem("lastCity");
+
+if (lastCity) {
+
+    document.getElementById("cityInput").value =
+        lastCity;
+
+    updateTownList();
+
+}
+
+updateTownList();
+
+const pendingDelivery =
+    JSON.parse(localStorage.getItem("pendingDelivery"));
+    
+if (pendingDelivery) {
+
+    document.getElementById("courseInput").value =
+        pendingDelivery.course;
+
+    document.getElementById("cityInput").value =
+        pendingDelivery.city;
+
+    updateTownList();
+
+    document.getElementById("townInput").value =
+        pendingDelivery.town;
+
+    document.getElementById("addressInput").value =
+        pendingDelivery.address;
+
+    document.getElementById("memoInput").value =
+        pendingDelivery.memo;
+
+    document.getElementById("keyboxInput").value =
+        pendingDelivery.keybox;
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>保存確認画面</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="confirmPage">
+
+<h1>保存確認画面</h1>
+
+<p>
+田中で保存しますか？
+</p>
+
+<br>
+
+<div class="confirmButtons">
+
+    <button class="saveButton" onclick="saveDelivery()
+">
+        保存
+    </button>
+
+    <button class="cancelButton" onclick="location.href='new.html'
+">
+        キャンセル
+    </button>
+
+</div>
+
+<script>
+
+function saveDelivery() {
+
+    const pendingDelivery =
+        JSON.parse(localStorage.getItem("pendingDelivery"));
+
+    const deliveries =
+        JSON.parse(localStorage.getItem("deliveries")) || [];
+
+    deliveries.push(pendingDelivery);
+
+    localStorage.setItem(
+        "deliveries",
+        JSON.stringify(deliveries)
+    );
+
+    localStorage.setItem(
+        "currentDeliveryId",
+        pendingDelivery.id
+    );
+
+    localStorage.removeItem("pendingDelivery");
+
+    location.href = "detail.html";
+
+}
+
+</script>
+
+</body>
+</html>

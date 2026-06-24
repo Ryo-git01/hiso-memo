@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>編集モード</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="editPage">
+
+<h1>編集モード</h1>
+
+<p>町</p>
+
+<select id="townInput">
+
+</select>
+
+<p>住所</p>
+<input id="addressInput" placeholder="住所">
+
+<br><br>
+
+
+<p>配送先メモ</p>
+
+<textarea id="memoInput" rows="5" cols="30">
+入口は裏側。インターホンあり。
+</textarea>
+
+<p>キーボックス</p>
+
+<input id="keyboxInput" value="1234">
+
+<br><br><br>
+
+<div class="editButtonGrid">
+
+    <button class="saveButton" onclick="saveMemo()">
+        ✅ 編集完了
+    </button>
+
+    <button class="deleteButton" onclick="location.href='delete-confirm.html'">
+        🗑 削除
+    </button>
+
+    <button class="backButton" onclick="location.href='detail.html'
+">
+        🔙 戻る
+    </button>
+
+</div>
+
+<script src="townData.js"></script>
+
+<script>
+
+const deliveries =
+    JSON.parse(localStorage.getItem("deliveries")) || [];
+
+const currentDeliveryId =
+    Number(localStorage.getItem("currentDeliveryId"));
+
+const delivery =
+    deliveries.find(function(item) {
+        return item.id === currentDeliveryId;
+    });
+
+if (delivery) {
+
+    updateTownList(delivery.city);
+
+    document.getElementById("townInput").value =
+        delivery.town;
+
+    document.getElementById("addressInput").value =
+        delivery.address;
+
+    document.getElementById("memoInput").value =
+        delivery.memo;
+
+    document.getElementById("keyboxInput").value =
+        delivery.keybox;
+}
+
+function saveMemo() {
+   const memo =
+    document.getElementById("memoInput").value;
+
+const keybox =
+    document.getElementById("keyboxInput").value;
+
+const town =
+    document.getElementById("townInput").value;
+
+const address =
+    document.getElementById("addressInput").value;
+
+delivery.memo = memo;
+delivery.keybox = keybox;
+delivery.town = town;
+delivery.address = address;
+
+localStorage.setItem(
+    "deliveries",
+    JSON.stringify(deliveries)
+);
+
+location.href = "detail.html";
+}
+
+function updateTownList(city) {
+
+    const townSelect =
+        document.getElementById("townInput");
+
+    townSelect.innerHTML = "";
+
+    townData[city].forEach(function(town) {
+
+        townSelect.innerHTML += `
+            <option>${town}</option>
+        `;
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

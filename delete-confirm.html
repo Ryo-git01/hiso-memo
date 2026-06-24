@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>削除確認</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="deletePage">
+
+<h1>削除確認</h1>
+
+<p>この配送先を削除しますか？</p>
+
+<p class="warning">
+    ※削除したデータは元に戻せません。
+</p>
+
+<br>
+
+<div class="deleteButtons">
+
+    <button class="deleteButton" onclick="deleteDelivery()
+">
+     🗑️削除
+    </button>
+
+    <button class="backButton" onclick="location.href='edit.html'
+">
+        キャンセル
+    </button>
+
+</div>
+
+<script>
+
+function deleteDelivery() {
+
+    const currentId =
+        Number(localStorage.getItem("currentDeliveryId"));
+
+    let deliveries =
+        JSON.parse(localStorage.getItem("deliveries")) || [];
+
+    deliveries = deliveries.filter(function(delivery) {
+        return delivery.id !== currentId;
+    });
+
+    localStorage.setItem(
+        "deliveries",
+        JSON.stringify(deliveries)
+    );
+
+    location.href = "address.html";
+}
+
+</script>
+
+</body>
+</html>

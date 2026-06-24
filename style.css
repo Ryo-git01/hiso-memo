@@ -1,0 +1,575 @@
+body {
+    margin: 20px;
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 24px;
+}
+
+button {
+    width: 100%;
+    font-size: 22px;
+    padding: 16px;
+    margin: 8px 0;
+    border-radius: 8px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    font-size: 22px;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+p {
+    margin-bottom: 8px;
+}
+
+
+
+
+
+.cityPage button {
+    width: 50%;
+    font-size: 60px;
+    padding: 40px;
+    margin: 10px auto;
+    display: block;
+}
+
+.cityPage h1 {
+    font-size: 120px;
+    margin-bottom: 100px;
+}
+
+.cityPage  .backButton {
+    width: 30%;
+    font-size: 40px;
+    padding: 40px;
+    margin: 50px auto;
+    margin-left: 100px;
+}
+
+.townPage button {
+
+    width: 50%;
+
+    font-size: 50px;
+
+    padding: 20px;
+
+    margin: -20px auto;
+
+    display: block;
+
+}
+
+.townPage h1 {
+
+    font-size: 120px;
+
+    margin-bottom: 100px;
+
+}
+
+.townPage  .backButton {
+    width: 30%;
+    font-size: 40px;
+    padding: 50px;
+    margin-left: 100px;
+}
+
+.addressPage button {
+
+    width: 90%;
+
+    font-size: 50px;
+
+    padding: 40px;
+
+    margin: -15px auto;
+
+    display: block;
+
+}
+
+.addressPage h1 {
+
+    font-size: 120px;
+
+    margin-bottom: 100px;
+
+}
+
+.addressPage .backButton {
+
+ width: 30%;
+    font-size: 40px;
+    padding: 40px;
+    margin: 50px auto;
+    margin-left: 100px;
+
+}
+
+.detailPage h1 {
+
+    font-size: 120px;
+
+    margin-bottom: 80px;
+
+}
+
+.detailPage button {
+
+    width: 30%;
+
+    font-size: 30px;
+
+    padding: 20px;
+
+    margin: 10px 100;
+
+    display: block;
+
+}
+
+.detailPage .copyButton {
+
+    margin-left: 30px;
+
+}
+
+.detailPage p {
+
+    font-size: 65px !important;
+
+}
+
+.detailPage .buttonGrid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 50px;
+
+    width: 90%;
+
+    margin: 100px auto;
+
+}
+
+.detailPage .buttonGrid button {
+
+    width: 100%;
+
+    font-size: 45px;
+
+    padding: 30px;
+    
+}
+
+.editPage h1 {
+
+    font-size: 120px;
+
+    margin-bottom: 80px;
+
+}
+
+.editPage button {
+
+    width: 30%;
+
+    font-size: 30px;
+
+    padding: 25px;
+
+    margin: 10px 100;
+
+   
+
+    display: block;
+
+}
+
+.editPage input,
+.editPage textarea,
+.editPage select {
+
+    width: 100%;
+    font-size: 60px;
+    padding: 10px;
+
+    border: 3px solid black;
+
+}
+
+.editPage p {
+
+    font-size: 50px;
+
+}
+
+.editPage .editButtonGrid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    width: 100%;
+
+    margin: 50px auto;
+
+}
+
+.editPage .editButtonGrid button {
+
+    width: 100%;
+
+    font-size: 50px;
+
+    padding: 30px;
+
+}
+
+.editPage .backButton {
+
+    grid-column: 1;
+
+}
+
+.deletePage h1 {
+
+    font-size: 120px;
+
+    margin-bottom: 200px;
+
+}
+
+.deletePage p {
+
+    font-size: 71px 
+
+}
+
+.deletePage button {
+
+    width: 40%;
+
+    font-size: 50px;
+
+    padding: 30px;
+
+    margin: 150px auto;
+
+    display: block;
+
+}
+
+.deletePage .warning {
+
+    font-size: 55px;
+
+    color: #666;
+
+}
+
+.deletePage .deleteButtons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    width: 90%;
+
+    margin: 50px auto;
+
+}
+
+.deletePage .deleteButtons button {
+
+    width: 45%;
+
+    font-size: 50px;
+
+    padding: 40px;
+
+}
+
+.newPage h1 {
+
+    font-size: 120px;
+
+    margin-bottom: 80px;
+
+}
+
+.newPage p {
+
+    font-size: 75px;
+
+}
+
+.newPage button {
+
+    width: 30%;
+
+    font-size: 35px;
+
+    padding: 25px;
+
+    margin: 1px auto;
+
+    display: block;
+
+}
+
+.newPage input,
+.newPage textarea,
+.newPage select {
+
+    width: 40%;
+
+    font-size: 50px;
+
+    padding: 20px;
+
+}
+
+.newPage .addressInput {
+
+    width: 100%;
+
+    height: 100px;
+
+    border: 3px solid #333;
+
+}
+
+.newPage .memoInput {
+
+    width: 100%;
+
+    height: 350px;
+
+    border: 3px solid #333;
+
+}
+
+.newPage .keyboxInput {
+
+    width: 50%;
+
+    height: 100px;
+
+    border: 3px solid #333;
+
+}
+
+.newPage .confirmButton {
+
+    margin-left: 30px;
+
+    margin-top: 100px;
+
+    width: 30%;
+
+    padding: 30px;
+
+    font-size: 70px;
+
+}
+
+.newPage .backButton {
+
+margin-left: 30px;
+
+    margin-top: 30px;
+
+    width: 30%;
+
+    padding: 30px;
+
+    font-size: 70px;
+
+}
+
+.searchPage h1 {
+
+    font-size: 120px;
+
+    margin-bottom: 80px;
+
+}
+
+.searchPage input {
+
+    width: 100%;
+
+    height: 150px;
+
+    font-size: 70px;
+
+    border: 3px solid #333;
+
+    padding: 40px;
+
+}
+
+.searchPage button {
+
+    width: 40%;
+
+    font-size: 80px;
+
+    padding: 50px;
+
+    margin: 100px auto;
+
+    display: block;
+
+}
+
+.searchPage .searchButton {
+
+    margin-top: 250px;
+
+}
+
+.searchPage .backButton {
+
+    margin-top: -100px;
+
+}
+
+.searchPage .resultButton {
+
+    width: 90%;
+
+    font-size: 50px;
+
+    padding: 40px;
+
+    margin: 10px auto;
+
+
+}
+
+.homePage h1 {
+
+    font-size: 50px;
+
+    margin-bottom: 50px;
+
+}
+
+.homePage button {
+
+    width: 80%;
+
+    font-size: 30px;
+
+    padding: 10px;
+
+    margin: -20px auto;
+
+    display: block;
+
+}
+
+.homePage .searchButton {
+
+    font-size: 15px;
+
+    width: 60%;
+    
+    padding: 20px;
+
+    margin: -10px auto;
+
+}
+
+.homePage .newButton {
+
+    font-size: 15px;
+
+    width: 60%;
+    
+    padding: 20px;
+
+    margin: -10px auto;
+
+}
+
+.homePage .bottomButtons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+}
+
+.confirmPage h1 {
+
+    font-size: 120px;
+
+    margin-bottom: 80px;
+
+}
+
+.confirmPage p {
+
+    font-size: 70px;
+
+     margin: 100px;
+}
+
+.confirmPage button {
+
+    width: 40%;
+
+    font-size: 50px;
+
+    padding: 40px;
+
+    margin: 100px auto;
+
+    display: block;
+
+}
+
+.confirmPage .confirmButtons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 40px;
+
+    width: 90%;
+
+    margin: 50px auto;
+
+}
+
+.confirmPage .confirmButtons button {
+
+    width: 45%;
+
+    font-size: 50px;
+
+    padding: 35px;
+
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<title>町一覧</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="townPage">
+
+<h1 id="cityTitle"></h1>
+
+<div id="townList"></div>
+
+<br><br>
+
+<button class="backButton" onclick="location.href='nara-city.html'">
+    ←戻る
+</button>
+
+<script src="townData.js"></script>
+
+<script>
+
+const currentCity =
+    localStorage.getItem("currentCity");
+
+const towns =
+    townData[currentCity];
+
+document.getElementById("cityTitle").textContent =
+    currentCity;
+
+const townList =
+    document.getElementById("townList");
+
+const deliveries =
+    JSON.parse(localStorage.getItem("deliveries")) || [];
+
+
+towns.sort(function(a, b) {
+
+    const countA =
+        deliveries.filter(function(delivery) {
+
+            return delivery.city === currentCity &&
+                   delivery.town === a;
+
+        }).length;
+
+    const countB =
+        deliveries.filter(function(delivery) {
+
+            return delivery.city === currentCity &&
+                   delivery.town === b;
+
+        }).length;
+
+if (countA !== countB) {
+
+    return countB - countA;
+
+}
+
+return towns.indexOf(a) - towns.indexOf(b);
+
+});
+
+towns.forEach(function(town) {
+
+    const deliveries =
+        JSON.parse(localStorage.getItem("deliveries")) || [];
+
+    const count =
+        deliveries.filter(function(delivery) {
+
+            return delivery.city === currentCity &&
+                   delivery.town === town;
+
+        }).length;
+
+    townList.innerHTML += `
+        <button onclick="selectTown('${town}')">
+            ${town}${count > 0 ? "（" + count + "）" : ""}
+        </button>
+
+        <br><br>
+    `;
+
+});
+
+function selectTown(town) {
+
+    localStorage.setItem(
+        "currentTown",
+        town
+    );
+
+    location.href = "address.html";
+
+}
+
+</script>

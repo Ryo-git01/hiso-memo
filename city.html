@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>市町村一覧</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="cityPage">
+
+<h1 id="courseTitle"></h1>
+
+<div id="deliveryList"></div>
+
+<br><br>
+
+<button onclick="location.href='index.html'">
+← 戻る
+</button>
+
+<script>
+
+const deliveries =
+    JSON.parse(localStorage.getItem("deliveries")) || [];
+
+const currentCourse =
+    localStorage.getItem("currentCourse");
+
+    document.getElementById("courseTitle").textContent =
+    currentCourse;
+
+const list =
+    document.getElementById("deliveryList");
+
+
+deliveries.forEach(function(delivery) {
+
+    if (delivery.course === currentCourse) {
+
+        list.innerHTML += `
+<button onclick="selectDelivery(${delivery.id})">
+    ${delivery.address}
+</button>
+
+<br><br>
+        `;
+
+    }
+
+});
+
+function selectDelivery(id) {
+    localStorage.setItem("currentDeliveryId", id);
+
+    location.href = "detail.html";
+}
+
+</script>
+</body>
+</html>

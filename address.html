@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="UTF-8">
+<title>住所一覧</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="addressPage">
+
+<h1 id="townTitle"></h1>
+
+<div id="addressList"></div>
+
+<br><br>
+
+<button class="backButton" onclick="location.href='town.html'">
+    ←戻る
+</button>
+
+<script>
+
+const currentTown =
+    localStorage.getItem("currentTown");
+
+document.getElementById("townTitle").textContent =
+    currentTown;
+
+const deliveries =
+    JSON.parse(localStorage.getItem("deliveries")) || [];
+
+const addressList =
+    document.getElementById("addressList");
+
+deliveries.forEach(function(delivery) {
+
+    if (delivery.town === currentTown) {
+
+        addressList.innerHTML += `
+            <button onclick="selectDelivery(${delivery.id})">
+                ${delivery.address}
+            </button>
+
+            <br><br>
+        `;
+
+    }
+
+});
+
+function selectDelivery(id) {
+
+    localStorage.setItem(
+        "currentDeliveryId",
+        id
+    );
+
+    localStorage.setItem(
+        "previousPage",
+        "address"
+    );
+
+    location.href = "detail.html";
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="homePage"> <h1>Hi-So Memo</h1>
+
+<button onclick="selectCourse('堺コース')">
+    堺コース
+</button>
+<br><br>
+
+<button onclick="selectCourse('和泉コース')">
+    和泉コース
+</button>
+<br><br>
+
+<button onclick="selectCourse('岸和田コース')">
+    岸和田コース
+</button>
+<br><br>
+
+<button onclick="selectCourse('八尾コース')">
+    八尾コース
+</button>
+<br><br>
+
+<button onclick="selectNaraNorth()">
+    奈良北コース
+</button>
+<br><br>
+
+<button onclick="selectCourse('奈良南コース')">
+    奈良南コース
+</button>
+<br><br>
+
+
+<div class="bottomButtons">
+
+    <button class="searchButton" onclick="location.href='search.html'">
+        🔍住所から
+    </button>
+
+    <button class="newButton" onclick="location.href='new.html'">
+        ⊕新規登録
+    </button>
+
+</div>
+
+<script>
+function selectCourse(course) {
+    localStorage.setItem("currentCourse", course);
+
+    location.href = "city.html";
+}
+
+function selectNaraNorth() {
+    localStorage.setItem("currentCourse", "奈良北コース");
+
+    location.href = "nara-city.html";
+}
+
+</script>
+
+</body>
+</html>

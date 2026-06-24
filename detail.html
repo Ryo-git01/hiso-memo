@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>配送先詳細</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="detailPage">
+
+<h1>配送先詳細</h1>
+
+<p id="address"></p>
+<button class="copyButton" onclick="copyAddress()">
+        📋 住所をコピー
+</button>
+
+<p id="message"
+   style="height:20px;
+          color:green;
+          text-align:center;">
+</p>
+
+<p>配送先メモ：</p>
+
+<p id="memo"></p>
+
+<p>写真</p>
+
+<div onclick="location.href='photo.html'"
+style="border:1px solid black;
+padding:20px;
+cursor:pointer;">
+
+📷 📷
+
+<br><br>
+
+📷 📷　+3
+
+</div>
+
+<br>
+
+<p id="keybox"></p>
+<br><br>
+
+<div class="buttonGrid">
+<button onclick="goBack()">
+🔙戻る
+</button>
+
+<button onclick="location.href='edit.html'">
+✍編集
+</button>
+
+<button onclick="goHome()">
+    🏠 ホーム
+</button>
+
+<button onclick="openMap()">📍 Googleマップ</button>
+</div>
+
+<script>
+const deliveries =
+    JSON.parse(localStorage.getItem("deliveries")) || [];
+
+const currentDeliveryId =
+    Number(localStorage.getItem("currentDeliveryId"));
+
+const delivery =
+    deliveries.find(function(item) {
+        return item.id === currentDeliveryId;
+    });
+
+if (delivery) {
+
+document.getElementById("address").textContent =
+    "住所：" +
+    delivery.city + " " +
+    delivery.town + " " +
+    delivery.address;
+
+    document.getElementById("memo").textContent =
+        delivery.memo;
+
+    document.getElementById("keybox").textContent =
+        "キーボックス：" + delivery.keybox;
+
+}
+
+function goBack() {
+
+    const previousPage =
+        localStorage.getItem("previousPage");
+
+    const fromNew =
+    localStorage.getItem("fromNew");
+    
+    if (fromNew === "true") {
+
+    localStorage.removeItem("fromNew");
+
+    location.href = "new.html";
+
+    return;
+
+}
+
+    if (previousPage === "search") {
+
+        location.href = "search.html";
+
+    } else if (previousPage === "address") {
+
+        location.href = "address.html";
+
+    } else {
+
+        location.href = "index.html";
+
+    }
+
+}
+
+function goHome() {
+
+    location.href = "index.html";
+
+}
+
+function openMap() {
+
+    const id =
+        localStorage.getItem("currentDeliveryId");
+
+    const deliveries =
+        JSON.parse(localStorage.getItem("deliveries")) || [];
+
+    const delivery =
+        deliveries.find(function(d) {
+            return d.id == id;
+        });
+
+    const address =
+        `${delivery.city} ${delivery.town} ${delivery.address}`;
+
+    window.open(
+        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`,
+        "_blank"
+    );
+
+}
+
+function copyAddress() {
+
+    const id =
+        localStorage.getItem("currentDeliveryId");
+
+    const deliveries =
+        JSON.parse(localStorage.getItem("deliveries")) || [];
+
+    const delivery =
+        deliveries.find(function(d) {
+            return d.id == id;
+        });
+
+    const address =
+        `${delivery.city} ${delivery.town} ${delivery.address}`;
+
+    navigator.clipboard.writeText(address);
+
+const message =
+    document.getElementById("message");
+
+message.textContent =
+    "📋 住所をコピーしました。";
+
+setTimeout(function() {
+
+    message.textContent = "";
+
+}, 1000);
+
+}
+
+</script>
+
+</body>
+</html>

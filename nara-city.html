@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>奈良北コース 市一覧</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="cityPage">
+
+<h1>奈良北コース</h1>
+
+<button onclick="selectCity('奈良市')">
+奈良市
+</button>
+
+<br><br>
+
+<button onclick="selectCity('生駒市')">
+生駒市
+</button>
+
+<br><br>
+
+<button onclick="selectCity('大和郡山市')">
+大和郡山市
+</button>
+
+<br><br>
+
+<button onclick="selectCity('天理市')">
+天理市
+</button>
+
+<br><br>
+
+<button class="backButton" onclick="location.href='index.html'">
+←戻る
+</button>
+
+<script>
+function selectCity(city) {
+    localStorage.setItem("currentCity", city);
+
+    location.href = "town.html";
+}
+</script>
+
+</body>
+</html>

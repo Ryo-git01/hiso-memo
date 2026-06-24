@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>住所検索</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="searchPage">
+    
+<h1>住所検索</h1>
+
+<input
+    id="searchInput"
+    placeholder="住所・建物名を入力">
+
+<button class="searchButton" onclick="searchAddress()">
+    🔍検索
+</button>
+    <br><br>
+
+<div id="searchResult"></div>
+
+<br><br>
+
+<button class="backButton" onclick="location.href='index.html'">
+    🔙戻る
+</button>
+
+<script>
+
+function searchAddress() {
+
+    const keyword =
+        document.getElementById("searchInput").value;
+
+        localStorage.setItem(
+    "lastSearchKeyword",
+    keyword
+);
+        
+    const deliveries =
+        JSON.parse(localStorage.getItem("deliveries")) || [];
+    
+
+    const result =
+        document.getElementById("searchResult");
+
+    result.innerHTML = "";
+
+deliveries.forEach(function(delivery) {
+
+    if (
+        delivery.city.includes(keyword) ||
+        delivery.town.includes(keyword) ||
+        delivery.address.includes(keyword)
+    ) {
+
+result.innerHTML += `
+    <button class="resultButton"
+            onclick="selectDelivery(${delivery.id})">
+        【${delivery.city}】 ${delivery.town} ${delivery.address}
+    </button>
+    <br><br>
+`;
+
+        }
+
+    });
+
+}
+
+function selectDelivery(id) {
+
+    localStorage.setItem("currentDeliveryId", id);
+
+    localStorage.setItem("previousPage", "search");
+
+    location.href = "detail.html";
+
+}
+
+const lastKeyword =
+    localStorage.getItem("lastSearchKeyword");
+
+if (lastKeyword) {
+
+    document.getElementById("searchInput").value =
+        lastKeyword;
+
+    searchAddress();
+
+}
+
+</script>
+
+</body>
+</html>
