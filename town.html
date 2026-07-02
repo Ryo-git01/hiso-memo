@@ -16,7 +16,7 @@
 
 <br><br>
 
-<button class="backButton" onclick="location.href='nara-city.html'">
+<button class="backButton" onclick="goBack()">
     ←戻る
 </button>
 
@@ -99,6 +99,30 @@ function selectTown(town) {
     );
 
     location.href = "address.html";
+
+}
+
+function goBack() {
+
+    const currentCity =
+        localStorage.getItem("currentCity");
+
+    const currentCourse =
+        localStorage.getItem("currentCourse");
+
+    if (currentCity.startsWith("堺市")) {
+
+        location.href = "sakai-ward.html";
+
+    } else if (currentCourse === "奈良北コース") {
+
+        location.href = "nara-city.html";
+
+    } else if (currentCourse === "和泉コース") {
+
+        location.href = "izumi-city.html";
+
+    }
 
 }
 

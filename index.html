@@ -7,14 +7,14 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="homePage"> <h1>Hi-So Memo</h1>
+<body class="homePage"> 
 
 <button onclick="selectCourse('堺コース')">
     堺コース
 </button>
 <br><br>
 
-<button onclick="selectCourse('和泉コース')">
+<button onclick="selectIzumi()">
     和泉コース
 </button>
 <br><br>
@@ -63,6 +63,37 @@ function selectNaraNorth() {
     localStorage.setItem("currentCourse", "奈良北コース");
 
     location.href = "nara-city.html";
+}
+
+function selectIzumi() {
+    localStorage.setItem("currentCourse", "和泉コース");
+
+    location.href = "izumi-city.html";
+}
+
+function selectSakaiHigashi() {
+    localStorage.setItem("currentCity", "堺市東区");
+    location.href = "town.html";
+}
+
+function selectSakaiNaka() {
+    localStorage.setItem("currentCity", "堺市中区");
+    location.href = "town.html";
+}
+
+function selectSakaiNishi() {
+    localStorage.setItem("currentCity", "堺市西区");
+    location.href = "town.html";
+}
+
+function selectSakaiMinami() {
+    localStorage.setItem("currentCity", "堺市南区");
+    location.href = "town.html";
+}
+
+function selectSakaiMihara() {
+    localStorage.setItem("currentCity", "堺市美原区");
+    location.href = "town.html";
 }
 
 </script>

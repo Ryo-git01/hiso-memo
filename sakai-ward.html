@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>堺市　区一覧</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="cityPage">
+
+<h1>堺市</h1>
+
+<button onclick="selectWard('東区')">
+東区
+</button>
+
+<br><br>
+
+<button onclick="selectWard('中区')">
+中区
+</button>
+
+<br><br>
+
+<button onclick="selectWard('西区')">
+西区
+</button>
+
+<br><br>
+
+<button onclick="selectWard('南区')">
+南区
+</button>
+
+<br><br>
+
+<button onclick="selectWard('美原区')">
+美原区
+</button>
+<br><br>
+
+<button class="backButton" onclick="goBack()">
+    ←戻る
+</button>\
+
+<script>
+function selectWard(ward) {
+    localStorage.setItem("currentCity", "堺市" + ward);
+    location.href = "town.html";
+}
+
+function goBack() {
+
+    location.href = "izumi-city.html";
+
+}
+
+</script>
+
+</body>
+</html>

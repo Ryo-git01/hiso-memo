@@ -64,11 +64,6 @@
           class="memoInput"></textarea>
 <br><br>
 
-<p>キーボックス</p>
-<input id="keyboxInput"
-       class="keyboxInput">
-<br><br>
-
 <button class="confirmButton" onclick="saveNewDestination()">
     ☐確認
 </button>
@@ -105,7 +100,6 @@ function updateTownList() {
 function saveNewDestination() {
     const address = document.getElementById("addressInput").value;
     const memo = document.getElementById("memoInput").value;
-    const keybox = document.getElementById("keyboxInput").value;
     const course = document.getElementById("courseInput").value;
     const city = document.getElementById("cityInput").value;
     const town = document.getElementById("townInput").value;
@@ -128,7 +122,6 @@ const newDelivery = {
     town: town,
     address: address,
     memo: memo,
-    keybox: keybox
 };
 
 // 確認画面用に一時保存
@@ -193,9 +186,6 @@ if (pendingDelivery) {
 
     document.getElementById("memoInput").value =
         pendingDelivery.memo;
-
-    document.getElementById("keyboxInput").value =
-        pendingDelivery.keybox;
 
 }
 

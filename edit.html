@@ -29,12 +29,6 @@
 入口は裏側。インターホンあり。
 </textarea>
 
-<p>キーボックス</p>
-
-<input id="keyboxInput" value="1234">
-
-<br><br><br>
-
 <div class="editButtonGrid">
 
     <button class="saveButton" onclick="saveMemo()">
@@ -79,17 +73,11 @@ if (delivery) {
 
     document.getElementById("memoInput").value =
         delivery.memo;
-
-    document.getElementById("keyboxInput").value =
-        delivery.keybox;
 }
 
 function saveMemo() {
    const memo =
     document.getElementById("memoInput").value;
-
-const keybox =
-    document.getElementById("keyboxInput").value;
 
 const town =
     document.getElementById("townInput").value;
@@ -98,7 +86,6 @@ const address =
     document.getElementById("addressInput").value;
 
 delivery.memo = memo;
-delivery.keybox = keybox;
 delivery.town = town;
 delivery.address = address;
 

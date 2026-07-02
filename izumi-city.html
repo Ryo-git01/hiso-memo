@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>和泉コース 市一覧</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="cityPage">
+
+<h1>和泉コース</h1>
+
+<button onclick="selectCity('和泉市')">
+和泉市
+</button>
+
+<br><br>
+
+<button onclick="selectCity('松原市')">
+松原市
+</button>
+
+<br><br>
+
+<button onclick="selectCity('大阪狭山市')">
+大阪狭山市
+</button>
+
+<br><br>
+
+<button onclick="selectCity('富田林市')">
+富田林市
+</button>
+
+<br><br>
+
+<button onclick="selectCity('河内長野市')">
+河内長野市
+</button>
+<br><br>
+
+<button onclick="selectSakai()">
+    堺市
+</button>
+<br><br>
+
+<button class="backButton" onclick="location.href='index.html'">
+←戻る
+</button>
+
+<script>
+function selectCity(city) {
+    localStorage.setItem("currentCity", city);
+
+    location.href = "town.html";
+}
+
+function selectSakai() {
+    location.href = "sakai-ward.html";
+}
+
+</script>
+
+</body>
+</html>

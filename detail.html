@@ -22,9 +22,9 @@
           text-align:center;">
 </p>
 
-<p>配送先メモ：</p>
+<h2>配送先メモ：</h2>
 
-<p id="memo"></p>
+<div id="memo" class="memo-box"></div>
 
 <p>写真</p>
 
@@ -42,9 +42,6 @@ cursor:pointer;">
 </div>
 
 <br>
-
-<p id="keybox"></p>
-<br><br>
 
 <div class="buttonGrid">
 <button onclick="goBack()">
@@ -84,9 +81,6 @@ document.getElementById("address").textContent =
 
     document.getElementById("memo").textContent =
         delivery.memo;
-
-    document.getElementById("keybox").textContent =
-        "キーボックス：" + delivery.keybox;
 
 }
 
