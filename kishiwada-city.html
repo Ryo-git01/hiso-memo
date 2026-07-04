@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>岸和田コース 市一覧</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="cityPage">
+
+<h1>岸和田コース</h1>
+
+<button onclick="selectCity('岸和田市')">
+岸和田市
+</button>
+
+<br><br>
+
+<button onclick="selectCity('貝塚市')">
+貝塚市
+</button>
+
+<br><br>
+
+<button onclick="selectCity('泉南郡')">
+泉南郡
+</button>
+
+<br><br>
+
+<button onclick="selectCity('泉北郡')">
+泉北郡
+</button>
+<br><br>
+
+<button onclick="selectCity('泉大津市')">
+泉大津市
+</button>
+
+<br><br>
+
+<button onclick="selectCity('泉佐野市')">
+泉佐野市
+</button>
+<br><br>
+
+<button onclick="selectCity('泉南市')">
+泉南市
+</button>
+<br><br>
+
+<button onclick="selectCity('阪南市')">
+阪南市
+</button>
+<br><br>
+
+<button class="backButton" onclick="location.href='index.html'">
+←戻る
+</button>
+
+<script>
+function selectCity(city) {
+    localStorage.setItem("currentCity", city);
+
+    location.href = "town.html";
+}
+
+</script>
+
+</body>
+</html>

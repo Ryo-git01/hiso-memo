@@ -19,7 +19,7 @@
 </button>
 <br><br>
 
-<button onclick="selectCourse('岸和田コース')">
+<button onclick="selectKishiwada()">
     岸和田コース
 </button>
 <br><br>
@@ -64,6 +64,13 @@ function selectNaraNorth() {
 
     location.href = "nara-city.html";
 }
+
+function selectKishiwada() {
+    localStorage.setItem("currentCourse", "岸和田コース");
+
+    location.href = "kishiwada-city.html";
+}
+
 
 function selectIzumi() {
     localStorage.setItem("currentCourse", "和泉コース");
