@@ -24,7 +24,7 @@
 </button>
 <br><br>
 
-<button onclick="selectCourse('八尾コース')">
+<button onclick="selectYao()">
     八尾コース
 </button>
 <br><br>
@@ -71,6 +71,11 @@ function selectKishiwada() {
     location.href = "kishiwada-city.html";
 }
 
+function selectYao() {
+    localStorage.setItem("currentCourse", "八尾コース");
+
+    location.href = "yao-city.html";
+}
 
 function selectIzumi() {
     localStorage.setItem("currentCourse", "和泉コース");
