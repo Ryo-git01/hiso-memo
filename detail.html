@@ -56,7 +56,8 @@ cursor:pointer;">
     🏠 ホーム
 </button>
 
-<button onclick="openMap()">📍 Googleマップ</button>
+<button onclick="openMap()">
+    📍 Googleマップ</button>
 </div>
 
 <script>
@@ -119,6 +120,8 @@ function goBack() {
 }
 
 function goHome() {
+
+    localStorage.removeItem("fromNew");
 
     location.href = "index.html";
 

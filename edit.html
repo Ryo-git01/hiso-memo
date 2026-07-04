@@ -1,33 +1,55 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+edit_html = """<!DOCTYPE html>
+
 <html lang="ja">
+
 <head>
+
     <meta charset="UTF-8">
+
     <title>編集モード</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body class="editPage">
 
+<div class="editContainer">
+
 <h1>編集モード</h1>
 
-<p>町</p>
+<p>コース</p>
 
-<select id="townInput">
-
+<select id="courseInput" onchange="updateCityList()">
 </select>
 
+<br><br>
+
+<p>エリア</p>
+
+<select id="cityInput" onchange="updateTownList()">
+</select>
+
+<br><br>
+
+<p>地区</p>
+
+<select id="townInput">
+</select>
+
+<br><br>
+
 <p>住所</p>
+
 <input id="addressInput" placeholder="住所">
 
 <br><br>
 
-
 <p>配送先メモ</p>
 
-<textarea id="memoInput" rows="5" cols="30">
-入口は裏側。インターホンあり。
-</textarea>
+<textarea id="memoInput" rows="5" cols="30"></textarea>
 
 <div class="editButtonGrid">
 
@@ -35,86 +57,284 @@
         ✅ 編集完了
     </button>
 
-    <button class="deleteButton" onclick="location.href='delete-confirm.html'">
+    <button class="deleteButton"
+            onclick="location.href='delete-confirm.html'">
         🗑 削除
     </button>
 
-    <button class="backButton" onclick="location.href='detail.html'
-">
+    <button class="backButton"
+            onclick="location.href='detail.html'">
         🔙 戻る
     </button>
 
 </div>
+
+</div>
+
+<script src="coursedata.js"></script>
 
 <script src="towndata.js"></script>
 
 <script>
 
 const deliveries =
+
     JSON.parse(localStorage.getItem("deliveries")) || [];
 
 const currentDeliveryId =
+
     Number(localStorage.getItem("currentDeliveryId"));
 
 const delivery =
+
     deliveries.find(function(item) {
+
         return item.id === currentDeliveryId;
+
     });
 
-if (delivery) {
+function updateCourseList() {
 
-    updateTownList(delivery.city);
+    const courseSelect =
 
-    document.getElementById("townInput").value =
-        delivery.town;
+        document.getElementById("courseInput");
 
-    document.getElementById("addressInput").value =
-        delivery.address;
+    courseSelect.innerHTML = "";
 
-    document.getElementById("memoInput").value =
-        delivery.memo;
+    Object.keys(courseData).forEach(function(course) {
+
+        const option =
+
+            document.createElement("option");
+
+        option.value = course;
+
+        option.textContent = course;
+
+        courseSelect.appendChild(option);
+
+    });
+
 }
 
-function saveMemo() {
-   const memo =
-    document.getElementById("memoInput").value;
+function updateCityList() {
 
-const town =
-    document.getElementById("townInput").value;
+    const course =
 
-const address =
-    document.getElementById("addressInput").value;
+        document.getElementById("courseInput").value;
 
-delivery.memo = memo;
-delivery.town = town;
-delivery.address = address;
+    const citySelect =
 
-localStorage.setItem(
-    "deliveries",
-    JSON.stringify(deliveries)
-);
+        document.getElementById("cityInput");
 
-location.href = "detail.html";
+    citySelect.innerHTML = "";
+
+    const cities =
+
+        courseData[course] || [];
+
+    cities.forEach(function(city) {
+
+        const option =
+
+            document.createElement("option");
+
+        option.value = city;
+
+        option.textContent = city;
+
+        citySelect.appendChild(option);
+
+    });
+
+    updateTownList();
+
 }
 
-function updateTownList(city) {
+function updateTownList() {
+
+    const city =
+
+        document.getElementById("cityInput").value;
 
     const townSelect =
+
         document.getElementById("townInput");
 
     townSelect.innerHTML = "";
 
-    townData[city].forEach(function(town) {
+    const towns =
 
-        townSelect.innerHTML += `
-            <option>${town}</option>
-        `;
+        townData[city] || [];
+
+    towns.forEach(function(town) {
+
+        const option =
+
+            document.createElement("option");
+
+        option.value = town;
+
+        option.textContent = town;
+
+        townSelect.appendChild(option);
 
     });
 
+    if (!towns.includes("その他")) {
+
+        const option =
+
+            document.createElement("option");
+
+        option.value = "その他";
+
+        option.textContent = "その他";
+
+        townSelect.appendChild(option);
+
+    }
+
 }
+
+function showDeliveryData() {
+
+    if (!delivery) {
+
+        alert("編集する配送先データが見つかりません。");
+
+        location.href = "index.html";
+
+        return;
+
+    }
+
+    updateCourseList();
+
+    if (delivery.course && courseData[delivery.course]) {
+
+        document.getElementById("courseInput").value =
+
+            delivery.course;
+
+    }
+
+    updateCityList();
+
+    const selectedCourse =
+
+        document.getElementById("courseInput").value;
+
+    const cities =
+
+        courseData[selectedCourse] || [];
+
+    if (delivery.city && cities.includes(delivery.city)) {
+
+        document.getElementById("cityInput").value =
+
+            delivery.city;
+
+    }
+
+    updateTownList();
+
+    const towns =
+
+        townData[delivery.city] || [];
+
+    if (
+
+        delivery.town &&
+
+        (
+
+            towns.includes(delivery.town) ||
+
+            delivery.town === "その他"
+
+        )
+
+    ) {
+
+        document.getElementById("townInput").value =
+
+            delivery.town;
+
+    }
+
+    document.getElementById("addressInput").value =
+
+        delivery.address || "";
+
+    document.getElementById("memoInput").value =
+
+        delivery.memo || "";
+
+}
+
+function saveMemo() {
+
+    if (!delivery) {
+
+        alert("保存する配送先データが見つかりません。");
+
+        return;
+
+    }
+
+    delivery.course =
+
+        document.getElementById("courseInput").value;
+
+    delivery.city =
+
+        document.getElementById("cityInput").value;
+
+    delivery.town =
+
+        document.getElementById("townInput").value;
+
+    delivery.address =
+
+        document.getElementById("addressInput").value;
+
+    delivery.memo =
+
+        document.getElementById("memoInput").value;
+
+    localStorage.setItem(
+
+        "deliveries",
+
+        JSON.stringify(deliveries)
+
+    );
+
+    localStorage.setItem(
+
+        "currentDeliveryId",
+
+        delivery.id
+
+    );
+
+    location.href = "detail.html";
+
+}
+
+showDeliveryData();
 
 </script>
 
 </body>
+
 </html>
+
+"""
+
+path = Path("/mnt/data/edit.html")
+
+path.write_text(edit_html, encoding="utf-8")
+
+print("created", path)
