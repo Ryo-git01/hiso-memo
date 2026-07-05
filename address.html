@@ -14,10 +14,9 @@
 
 <div id="addressList"></div>
 
-<br><br>
 
 <button class="backButton" onclick="location.href='town.html'">
-    ←戻る
+    🔙戻る
 </button>
 
 <script>
@@ -39,7 +38,8 @@ deliveries.forEach(function(delivery) {
     if (delivery.town === currentTown) {
 
         addressList.innerHTML += `
-            <button onclick="selectDelivery(${delivery.id})">
+            <button class="addressButton"
+                    onclick="selectDelivery(${delivery.id})">
                 ${delivery.address}
             </button>
 

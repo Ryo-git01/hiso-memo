@@ -1,4 +1,10 @@
 body {
+
+    background-color: #262A33;
+
+}
+
+body {
     margin: 20px;
     font-size: 22px;
     line-height: 1.6;
@@ -31,108 +37,519 @@ p {
 }
 
 
+.cityPage .cityButton {
 
-
-
-.cityPage button {
     width: 50%;
-    font-size: 60px;
-    padding: 40px;
-    margin: 10px auto;
+
     display: block;
+
+    margin: -15px auto;
+
+    padding: 40px;
+
+    font-size: 70px;
+
+    font-weight: bold;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    background: linear-gradient(
+        to bottom,
+        #57B8FF 0%,
+        #2F7BFF 55%,
+        #1E5ED8 100%
+    );
+
+    box-shadow:
+        0 0 0 #124D9E,
+        0 10px 20px rgba(0,0,0,.8);
+
+    transition: all .12s ease;
+
+}
+
+.cityPage .cityButton:hover {
+
+    filter: brightness(1.05);
+
+}
+
+.cityPage .cityButton:active {
+
+    transform: translateY(5px);
+
+    box-shadow:
+        0 1px 0 #124D9E,
+        0 3px 8px rgba(0,0,0,.15);
+
 }
 
 .cityPage h1 {
+
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
     font-size: 120px;
+
+    font-weight: 800;
+
+    color: white;
+
+    text-align: left;
+
     margin-bottom: 100px;
+
+    text-shadow:
+        2px 12px 6px rgba(0,0,0,1);
+
+    position: relative;
+
 }
 
-.cityPage  .backButton {
+.cityPage h1::after {
+
+    content: "";
+
+    display: block;
+
+    width: 80%;
+
+    height: 6px;
+
+    margin-top: 0px;
+
+background: linear-gradient(
+    to right,
+    rgba(0,0,0,0),
+    rgba(0,0,0,.5) 20%,
+    rgba(0,0,0,1) 50%,
+    rgba(0,0,0,.5) 80%,
+    rgba(0,0,0,0)
+);
+
+    border-radius: 999px;
+
+    filter: blur(3px);
+
+}
+
+.cityPage .backButton {
+
     width: 30%;
-    font-size: 40px;
-    padding: 40px;
-    margin: 50px auto;
-    margin-left: 100px;
-}
-
-.townPage button {
-
-    width: 50%;
 
     font-size: 50px;
 
-    padding: 20px;
+    padding: 40px;
 
-    margin: -20px auto;
+    margin: 50px auto;
+
+    margin-left: 100px;
+
+    background: linear-gradient(
+        to bottom,
+        #F4F4F4 0%,
+        #E3E3E3 100%
+    );
+
+    color: white;
+
+    border: 10px solid #2F7BFF;
+
+    border-radius: 50px;
+
+    box-shadow:
+        0 10px 20px rgb(12, 13, 99, 1);
+
+    font-weight: bold;
+
+    transition: .15s;
+
+}
+
+.cityPage .backButton:hover {
+
+    filter: brightness(1.03);
+
+}
+
+.cityPage .backButton:active {
+
+    transform: translateY(3px);
+
+    box-shadow:
+        0 2px 6px rgba(47,123,255,.18);
+
+}
+
+/* =========================================
+   地区選択画面
+========================================= */
+
+.townPage .townButton {
+
+    width: 50%;
 
     display: block;
+
+    margin: -15px auto;
+
+    padding: 40px;
+
+    font-size: 60px;
+
+    font-weight: bold;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    background: linear-gradient(
+        to bottom,
+        #57B8FF 0%,
+        #2F7BFF 55%,
+        #1E5ED8 100%
+    );
+
+    box-shadow:
+        0 0 0 #124D9E,
+      0 10px 20px rgb(12, 13, 99, 1);
+    transition: all .12s ease;
+
+}
+
+.townPage .townButton:hover {
+
+    filter: brightness(1.05);
+
+}
+
+.townPage .townButton:active {
+
+    transform: translateY(5px);
+
+    box-shadow:
+        0 1px 0 #124D9E,
+        0 3px 8px rgba(0,0,0,.15);
 
 }
 
 .townPage h1 {
 
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
     font-size: 120px;
+
+    font-weight: 800;
+
+    color: white;
+
+    text-align: left;
 
     margin-bottom: 100px;
 
+    text-shadow:
+        2px 12px 6px rgba(0,0,0,1);
+
+    position: relative;
+
+}
+.townPage h1::after {
+
+    content: "";
+
+    display: block;
+
+    width: 80%;
+
+    height: 6px;
+
+    margin-top: 0px;
+
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,0),
+        rgba(0,0,0,.5) 20%,
+        rgba(0,0,0,1) 50%,
+        rgba(0,0,0,.5) 80%,
+        rgba(0,0,0,0)
+    );
+
+    border-radius: 999px;
+
+    filter: blur(3px);
+
 }
 
-.townPage  .backButton {
+.townPage .backButton {
+
     width: 30%;
-    font-size: 40px;
-    padding: 50px;
-    margin-left: 100px;
-}
-
-.addressPage button {
-
-    width: 90%;
 
     font-size: 50px;
 
     padding: 40px;
 
-    margin: -15px auto;
+    margin: 50px auto;
+
+    margin-left: 100px;
+
+    background: linear-gradient(
+        to bottom,
+        #F4F4F4 0%,
+        #E3E3E3 100%
+    );
+
+    color: white;
+
+    border: 10px solid #2F7BFF;
+
+    border-radius: 50px;
+
+    box-shadow:
+        0 10px 20px rgb(12, 13, 99, 1);
+
+    font-weight: bold;
+
+    transition: .15s;
+
+}
+
+.townPage .backButton:hover {
+
+    filter: brightness(1.03);
+
+}
+
+.townPage .backButton:active {
+
+    transform: translateY(3px);
+
+    box-shadow:
+        0 2px 6px rgba(47,123,255,.18);
+
+}
+
+/* =========================================
+   住所一覧画面
+========================================= */
+
+.addressPage .addressButton {
+
+    width: 50%;
 
     display: block;
+
+    margin: -15px auto;
+
+    padding: 35px;
+
+    font-size: 70px;
+
+    font-weight: bold;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    background: linear-gradient(
+        to bottom,
+        #57B8FF 0%,
+        #2F7BFF 55%,
+        #1E5ED8 100%
+    );
+
+    box-shadow:
+        0 0 0 #124D9E,
+        0 10px 20px rgba(0,0,0,.8);
+
+    transition: all .12s ease;
+
+}
+
+.addressPage .addressButton:hover {
+
+    filter: brightness(1.05);
+
+}
+
+.addressPage .addressButton:active {
+
+    transform: translateY(5px);
+
+    box-shadow:
+        0 1px 0 #124D9E,
+        0 3px 8px rgba(0,0,0,.15);
 
 }
 
 .addressPage h1 {
 
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
     font-size: 120px;
+
+    font-weight: 800;
+
+    color: white;
+
+    text-align: left;
 
     margin-bottom: 100px;
 
-}
+    text-shadow:
+        2px 12px 6px rgba(0,0,0,1);
 
+    position: relative;
+
+}
+.addressPage h1::after {
+
+    content: "";
+
+    display: block;
+
+    width: 80%;
+
+    height: 6px;
+
+    margin-top: 0px;
+
+    background: linear-gradient(
+        to right,
+        rgba(0,0,0,0),
+        rgba(0,0,0,.5) 20%,
+        rgba(0,0,0,1) 50%,
+        rgba(0,0,0,.5) 80%,
+        rgba(0,0,0,0)
+    );
+
+    border-radius: 999px;
+
+    filter: blur(3px);
+
+}
 .addressPage .backButton {
 
- width: 30%;
-    font-size: 40px;
+    width: 30%;
+
+    font-size: 50px;
+
     padding: 40px;
+
     margin: 50px auto;
+
     margin-left: 100px;
+
+    background: linear-gradient(
+        to bottom,
+        #F4F4F4 0%,
+        #E3E3E3 100%
+    );
+
+    color: white;
+
+    border: 10px solid #2F7BFF;
+
+    border-radius: 50px;
+
+    box-shadow:
+        0 10px 20px rgb(12, 13, 99, 1);
+
+    font-weight: bold;
+
+    transition: .15s;
+
+}
+
+.townPage .backButton:hover {
+
+    filter: brightness(1.03);
+
+}
+
+.townPage .backButton:active {
+
+    transform: translateY(3px);
+
+    box-shadow:
+        0 2px 6px rgba(47,123,255,.18);
+
+}
+
+.detailPage .detailCard {
+
+    background: #E2E5E9;
+
+    border-radius: 30px;
+
+    border: 6px solid black;
+
+    padding: 50px;
+
+    margin:1px 0;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.35);
 
 }
 
 .detailPage h1 {
 
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
     font-size: 120px;
 
-    margin-bottom: 80px;
+    font-weight: 800;
+
+    color: white;
+
+    text-align: left;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        2px 12px 6px rgba(0,0,0,1);
+
+    position: relative;
 
 }
-
 .detailPage button {
 
     width: 30%;
 
     font-size: 30px;
 
-    padding: 20px;
+    padding: 30px;
 
-    margin: 10px 100;
+    margin: -100px 100;
 
     display: block;
 
@@ -141,6 +558,30 @@ p {
 .detailPage .copyButton {
 
     margin-left: 30px;
+
+    width: 40%;
+
+    background: linear-gradient(
+        to bottom,
+        #F4F4F4 0%,
+        #E3E3E3 100%
+    );
+
+    color: #2F7BFF;
+
+    border: 6px solid #B8B8B8;
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 8px 16px rgba(0,0,0,.25);
+
+    font-weight: bold;
+
+    text-shadow:
+        1px 2px 3px rgba(255,255,255,.5);
+
+    transition: .15s;
 
 }
 
@@ -158,9 +599,9 @@ p {
 
     gap: 50px;
 
-    width: 90%;
+    width: 100%;
 
-    margin: 100px auto;
+    margin: 0px auto;
 
 }
 
@@ -171,14 +612,147 @@ p {
     font-size: 45px;
 
     padding: 30px;
-    
+
+    background: linear-gradient(
+        to bottom,
+        #F4F4F4 0%,
+        #E3E3E3 100%
+    );
+
+    color: white;
+
+    border: 8px solid #2F7BFF;
+
+    border-radius: 40px;
+
+    box-shadow:
+        0 10px 20px rgb(12, 13, 99, 1);
+
+    font-weight: bold;
+
+    -webkit-text-stroke: 1.5px #2F7BFF;
+
+    text-shadow:
+        2px 3px 5px rgba(0,0,0,.35);
+
+    transition: .15s;
+
 }
+
+.detailPage .buttonGrid button:hover {
+
+    filter: brightness(1.03);
+
+}
+
+.detailPage .buttonGrid button:active {
+
+    transform: translateY(3px);
+
+    box-shadow:
+        0 2px 6px rgba(47,123,255,.18);
+
+}
+/* =========================================
+   配送先詳細画面 文字設定
+========================================= */
+
+/* 住所 */
+
+.detailPage #address {
+
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
+    font-size: 70px;
+
+    font-weight: 700;
+
+}
+
+/* 「配送先メモ：」 */
+
+.detailPage h2 {
+
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
+    font-size: 40px;
+
+    font-weight: 700;
+
+}
+
+/* メモ本文 */
+
+.detailPage .memo-box {
+
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
+    font-size: 60px;
+
+    font-weight: 600;
+
+}
+
+/* =========================================
+   編集画面 タイトル
+========================================= */
 
 .editPage h1 {
 
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
     font-size: 120px;
 
-    margin-bottom: 80px;
+    font-weight: 800;
+
+    color: white;
+
+    text-align: left;
+
+    margin-bottom: 100px;
+
+    text-shadow:
+        2px 12px 6px rgba(0,0,0,1);
+
+}
+
+
+/* =========================================
+   編集画面 項目名
+========================================= */
+
+.editPage p {
+
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
+    font-size: 55px;
+
+    font-weight: 700;
+
+    color: white;
+
+    text-shadow:
+        2px 8px 6px rgba(0,0,0,.8);
 
 }
 
@@ -212,19 +786,14 @@ p {
 
     font-size: 60px;
 
-    padding: 10px;
+    padding: 12px;
 
-    border: 3px solid black;
+    border: 4px solid black;
 
     box-sizing: border-box;
 
 }
 
-.editPage p {
-
-    font-size: 50px;
-
-}
 
 .editPage .editButtonGrid {
 
@@ -248,6 +817,45 @@ p {
 
     padding: 30px;
 
+    background: linear-gradient(
+        to bottom,
+        #F4F4F4 0%,
+        #E3E3E3 100%
+    );
+
+    color: white;
+
+    border: 10px solid #2F7BFF;
+
+    border-radius: 50px;
+
+    box-shadow:
+        0 10px 20px rgb(12, 13, 99, 1);
+
+    font-weight: bold;
+
+    -webkit-text-stroke: 2px #2F7BFF;
+
+    text-shadow:
+        2px 3px 6px rgba(0,0,0,.35);
+
+    transition: .15s;
+
+}
+
+.editPage .editButtonGrid button:hover {
+
+    filter: brightness(1.03);
+
+}
+
+.editPage .editButtonGrid button:active {
+
+    transform: translateY(3px);
+
+    box-shadow:
+        0 2px 6px rgba(47,123,255,.18);
+
 }
 
 .editPage .backButton {
@@ -258,15 +866,43 @@ p {
 
 .deletePage h1 {
 
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
     font-size: 120px;
 
+    font-weight: 800;
+
+    color: white;
+
+    text-align: left;
+
     margin-bottom: 200px;
+
+    text-shadow:
+        2px 12px 6px rgba(0,0,0,1);
 
 }
 
 .deletePage p {
 
-    font-size: 71px 
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
+    font-size: 71px;
+
+    font-weight: 700;
+
+    color: white;
+
+    text-shadow:
+        2px 8px 6px rgba(0,0,0,.8);
 
 }
 
@@ -286,9 +922,20 @@ p {
 
 .deletePage .warning {
 
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
     font-size: 55px;
 
-    color: #666;
+    font-weight: 600;
+
+    color: #D8D8D8;
+
+    text-shadow:
+        2px 4px 6px rgba(0,0,0,.7);
 
 }
 
@@ -314,27 +961,93 @@ p {
 
     padding: 40px;
 
+    background: linear-gradient(
+        to bottom,
+        #F4F4F4 0%,
+        #E3E3E3 100%
+    );
+
+    color: white;
+
+    border: 10px solid #2F7BFF;
+
+    border-radius: 50px;
+
+    box-shadow:
+        0 10px 20px rgb(12, 13, 99, 1);
+
+    font-weight: bold;
+
+    -webkit-text-stroke: 1.9px #2F7BFF;
+
+    text-shadow:
+        2px 3px 3px rgba(0,0,0,.6);
+
+    transition: .15s;
+
+}
+
+.deletePage .deleteButtons button:hover {
+
+    filter: brightness(1.03);
+
+}
+
+.deletePage .deleteButtons button:active {
+
+    transform: translateY(3px);
+
+    box-shadow:
+        0 2px 6px rgba(47,123,255,.18);
+
 }
 
 .newPage h1 {
 
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
     font-size: 120px;
 
+    font-weight: 800;
+
+    color: white;
+
+    text-align: left;
+
     margin-bottom: 80px;
+
+    text-shadow:
+        2px 12px 6px rgba(0,0,0,1);
 
 }
 
 .newPage p {
 
-    font-size: 75px;
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
+    font-size: 50px;
+
+    font-weight: 700;
+
+    color: white;
+
+    text-shadow:
+        2px 8px 6px rgba(0,0,0,.8);
 
 }
-
 .newPage button {
 
     width: 30%;
 
-    font-size: 35px;
+    font-size: 30px;
 
     padding: 25px;
 
@@ -350,7 +1063,7 @@ p {
 
     width: 40%;
 
-    font-size: 50px;
+    font-size: 60px;
 
     padding: 20px;
 
@@ -362,7 +1075,7 @@ p {
 
     height: 100px;
 
-    border: 3px solid #333;
+    border: 5px solid #333;
 
 }
 
@@ -372,7 +1085,7 @@ p {
 
     height: 350px;
 
-    border: 3px solid #333;
+    border: 5px solid #333;
 
 }
 
@@ -390,35 +1103,98 @@ p {
 
     margin-left: 30px;
 
-    margin-top: 100px;
+    margin-top: 50px;
 
-    width: 30%;
+    width: 40%;
 
     padding: 30px;
 
     font-size: 70px;
+
+    background: linear-gradient(
+        to bottom,
+        #F4F4F4 0%,
+        #E3E3E3 100%
+    );
+
+    color: white;
+
+    border: 10px solid #2F7BFF;
+
+    border-radius: 50px;
+
+    box-shadow:
+        0 10px 20px rgb(12, 13, 99);
+
+    font-weight: bold;
+
+    -webkit-text-stroke: 2px #2F7BFF;
+
+    text-shadow:
+        2px 3px 6px rgba(0,0,0,.35);
+
+    transition: .15s;
 
 }
 
 .newPage .backButton {
 
-margin-left: 30px;
+    margin-left: 30px;
 
-    margin-top: 30px;
+    margin-top: 10px;
 
-    width: 30%;
+    width: 40%;
 
     padding: 30px;
 
     font-size: 70px;
 
+    background: linear-gradient(
+        to bottom,
+        #F4F4F4 0%,
+        #E3E3E3 100%
+    );
+
+    color: white;
+
+    border: 10px solid #2F7BFF;
+
+    border-radius: 50px;
+
+    box-shadow:
+        0 10px 20px rgb(12, 13, 99);
+
+    font-weight: bold;
+
+    -webkit-text-stroke: 2px #2F7BFF;
+
+    text-shadow:
+        2px 3px 6px rgba(0,0,0,.35);
+
+    transition: .15s;
+
 }
 
 .searchPage h1 {
 
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
     font-size: 120px;
 
+    font-weight: 800;
+
+    color: white;
+
+    text-align: left;
+
     margin-bottom: 80px;
+
+    text-shadow:
+        2px 12px 6px rgba(0,0,0,1);
 
 }
 
@@ -432,7 +1208,7 @@ margin-left: 30px;
 
     border: 3px solid #333;
 
-    padding: 40px;
+    padding: 50px;
 
 }
 
@@ -448,11 +1224,59 @@ margin-left: 30px;
 
     display: block;
 
+    background: linear-gradient(
+        to bottom,
+        #F4F4F4 0%,
+        #E3E3E3 100%
+    );
+
+    color: white;
+
+    border: 10px solid #2F7BFF;
+
+    border-radius: 50px;
+
+    box-shadow:
+        0 10px 20px rgb(12,13,99);
+
+    font-weight: bold;
+
+    -webkit-text-stroke: 1.5px #2F7BFF;
+
+    text-shadow:
+        2px 3px 6px rgba(0,0,0,.35);
+
+    transition: .15s;
+
 }
 
 .searchPage .searchButton {
 
     margin-top: 250px;
+
+    background: linear-gradient(
+    to bottom,
+    #F4F4F4 0%,
+    #E3E3E3 100%
+);
+
+color: white;
+
+border: 10px solid #2F7BFF;
+
+border-radius: 50px;
+
+box-shadow:
+    0 10px 20px rgb(12,13,99);
+
+font-weight: bold;
+
+-webkit-text-stroke: 2.3px #2F7BFF;
+
+text-shadow:
+    2px 3px 6px rgba(0,0,0,.35);
+
+transition: .15s;
 
 }
 
@@ -460,6 +1284,30 @@ margin-left: 30px;
 
     margin-top: -100px;
 
+    background: linear-gradient(
+    to bottom,
+    #F4F4F4 0%,
+    #E3E3E3 100%
+);
+
+color: white;
+
+border: 10px solid #2F7BFF;
+
+border-radius: 50px;
+
+box-shadow:
+    0 10px 20px rgb(12,13,99);
+
+font-weight: bold;
+
+-webkit-text-stroke: 2.3px #2F7BFF;
+
+text-shadow:
+    2px 3px 6px rgba(0,0,0,.35);
+
+transition: .15s;
+    
 }
 
 .searchPage .resultButton {
@@ -472,76 +1320,153 @@ margin-left: 30px;
 
     margin: 10px auto;
 
+    display: block;
+
+    border: none;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    background: linear-gradient(
+        to bottom,
+        #57B8FF 0%,
+        #2F7BFF 55%,
+        #1E5ED8 100%
+    );
+
+    box-shadow:
+        0 0 0 #124D9E,
+        0 10px 20px rgba(0,0,0,.8);
+
+    font-weight: bold;
+
+    color: white;
+
+    text-shadow:
+        2px 3px 6px rgba(0,0,0,.6);
+
+    transition: all .12s ease;
+
+}
+
+.searchPage .resultButton:hover {
+
+    filter: brightness(1.05);
+
+}
+
+.searchPage .resultButton:active {
+
+    transform: translateY(5px);
+
+    box-shadow:
+        0 1px 0 #124D9E,
+        0 3px 8px rgba(0,0,0,.15);
 
 }
 
 .homePage {
 
-    padding-top: 40px;
+    padding-top:80px;
 
-    }
+}
 
-.homePage button {
+.homePage .courseButton {
 
     width: 80%;
 
-    font-size: 30px;
+    display: block;
+
+    margin: -25px auto;
 
     padding: 10px;
 
-    margin: -20px auto;
+    font-size: 32px;
 
-    display: block;
+    font-weight: bold;
 
-}
+    color: white;
 
-.homePage .searchButton {
+    border: none;
 
-    font-size: 15px;
+    border-radius: 7px;
 
-    width: 60%;
-    
-    padding: 20px;
+    cursor: pointer;
 
-    margin: -10px auto;
+    background: linear-gradient(
+        to bottom,
+        #57B8FF 0%,
+        #2F7BFF 55%,
+        #1E5ED8 100%
+    );
 
-}
+    box-shadow:
+        2px 4px 0px #124D9E,
+        2px 8px 8px rgba(0,0,0,.8);
 
-.homePage .newButton {
-
-    font-size: 15px;
-
-    width: 60%;
-    
-    padding: 20px;
-
-    margin: -10px auto;
+    transition: all .12s ease;
 
 }
 
-.homePage .bottomButtons {
+.homePage .courseButton:hover {
 
-    display: flex;
+    filter: brightness(1.05);
 
-    justify-content: center;
+}
 
-    gap: 30px;
+.homePage .courseButton:active {
+
+    transform: translateY(5px);
+
+    box-shadow:
+        0 1px 0 #124D9E,
+        0 3px 8px rgba(0,0,0,.15);
 
 }
 
 .confirmPage h1 {
 
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
     font-size: 120px;
 
+    font-weight: 800;
+
+    color: white;
+
+    text-align: left;
+
     margin-bottom: 80px;
+
+    text-shadow:
+        2px 12px 6px rgba(0,0,0,1);
 
 }
 
 .confirmPage p {
 
+    font-family:
+        "Hiragino Sans",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+
     font-size: 70px;
 
-     margin: 100px;
+    font-weight: 700;
+
+    color: white;
+
+    text-shadow:
+        2px 8px 6px rgba(0,0,0,.8);
+
+    margin: 100px;
+
 }
 
 .confirmPage button {
@@ -574,11 +1499,50 @@ margin-left: 30px;
 
 .confirmPage .confirmButtons button {
 
-    width: 45%;
+    width: 50%;
 
-    font-size: 50px;
+    font-size: 60px;
 
     padding: 35px;
+
+    background: linear-gradient(
+        to bottom,
+        #F4F4F4 0%,
+        #E3E3E3 100%
+    );
+
+    color: white;
+
+    border: 15px solid #2F7BFF;
+
+    border-radius: 50px;
+
+    box-shadow:
+        0 10px 20px rgb(12, 13, 99, 1);
+
+    font-weight: bold;
+
+    -webkit-text-stroke: 2px #2F7BFF;
+
+    text-shadow:
+        2px 3px 5px rgba(0,0,0,.35);
+
+    transition: .15s;
+
+}
+
+.confirmPage .confirmButtons button:hover {
+
+    filter: brightness(1.03);
+
+}
+
+.confirmPage .confirmButtons button:active {
+
+    transform: translateY(3px);
+
+    box-shadow:
+        0 2px 6px rgba(47,123,255,.18);
 
 }
 
@@ -599,3 +1563,112 @@ margin-left: 30px;
     margin-top: 10px;
     margin-bottom: 30px;
 }
+
+/* =========================================
+   ホーム画面
+   「住所から」「新規登録」ボタン
+========================================= */
+
+.homePage .searchButton,
+.homePage .newButton {
+
+    width: 45%;
+
+    font-size: 16px;
+
+    padding: 20px;
+
+    color: #333;
+
+    border: none;
+
+    border-radius: 7px;
+
+    cursor: pointer;
+
+    background: linear-gradient(
+        to bottom,
+        #F5F5F5 0%,
+        #DADADA 55%,
+        #BEBEBE 100%
+    );
+
+    box-shadow:
+        2px 4px 0 #8A8A8A,
+        2px 8px 10px rgba(0,0,0,.8);
+
+    transition: all .12s ease;
+
+}
+
+.homePage .searchButton:hover,
+.homePage .newButton:hover {
+
+    filter: brightness(1.05);
+
+}
+
+.homePage .searchButton:active,
+.homePage .newButton:active {
+
+    transform: translateY(5px);
+
+    box-shadow:
+        0 1px 0 #8A8A8A,
+        0 3px 8px rgba(0,0,0,.15);
+
+}
+
+.homePage .bottomButtons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+/* =========================================
+   共通ボタン文字シャドウ
+========================================= */
+
+.homePage .courseButton,
+.cityPage .cityButton,
+.townPage .townButton,
+.addressPage .addressButton {
+
+    text-shadow:
+        2px 3px 6px rgba(0,0,0,.6);
+
+}
+
+/* =========================================
+   ホーム画面 下部ボタン文字シャドウ
+========================================= */
+
+.homePage .searchButton,
+.homePage .newButton {
+
+    text-shadow:
+        1px 2px 2px rgba(0,0,0,.35);
+
+}
+
+/* =========================================
+   共通戻るボタン文字シャドウ
+========================================= */
+
+.cityPage .backButton,
+.townPage .backButton,
+.addressPage .backButton {
+
+    -webkit-text-stroke: 3px #2F7BFF;
+
+    text-shadow:
+        2px 4px 1px rgba(0,0,0,.7);
+
+}
+

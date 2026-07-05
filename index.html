@@ -9,32 +9,38 @@
 </head>
 <body class="homePage"> 
 
-<button onclick="selectCourse('堺コース')">
+<button class="courseButton"
+        onclick="selectSakai()">
     堺コース
 </button>
 <br><br>
 
-<button onclick="selectIzumi()">
+<button class="courseButton"
+        onclick="selectIzumi()">
     和泉コース
 </button>
 <br><br>
 
-<button onclick="selectKishiwada()">
+<button class="courseButton"
+        onclick="selectKishiwada()">
     岸和田コース
 </button>
 <br><br>
 
-<button onclick="selectYao()">
+<button class="courseButton"
+        onclick="selectYao()">
     八尾コース
 </button>
 <br><br>
 
-<button onclick="selectNaraNorth()">
+<button class="courseButton"
+        onclick="selectNaraNorth()">
     奈良北コース
 </button>
 <br><br>
 
-<button onclick="selectCourse('奈良南コース')">
+<button class="courseButton"
+        onclick="selectNaraSouth()">
     奈良南コース
 </button>
 <br><br>
@@ -59,10 +65,22 @@ function selectCourse(course) {
     location.href = "city.html";
 }
 
+function selectSakai() {
+    localStorage.setItem("currentCourse", "堺コース");
+
+    location.href = "sakai-city.html";
+}
+
 function selectNaraNorth() {
     localStorage.setItem("currentCourse", "奈良北コース");
 
     location.href = "nara-city.html";
+}
+
+function selectNaraSouth() {
+    localStorage.setItem("currentCourse", "奈良南コース");
+
+    location.href = "nara-south.html";
 }
 
 function selectKishiwada() {

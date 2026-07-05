@@ -14,10 +14,8 @@
 
 <div id="townList"></div>
 
-<br><br>
-
 <button class="backButton" onclick="goBack()">
-    ←戻る
+    🔙戻る
 </button>
 
 <script src="towndata.js"></script>
@@ -82,7 +80,8 @@ towns.forEach(function(town) {
         }).length;
 
     townList.innerHTML += `
-        <button onclick="selectTown('${town}')">
+        <button class="townButton"
+                onclick="selectTown('${town}')">
             ${town}${count > 0 ? "（" + count + "）" : ""}
         </button>
 
@@ -136,7 +135,7 @@ function goBack() {
 
     }else if (currentCourse === "奈良南コース") {
 
-        location.href = "narasouth-city.html";
+        location.href = "nara-south.html";
 
     }
 
