@@ -50,6 +50,25 @@ edit_html = """<!DOCTYPE html>
 <p>配送先メモ</p>
 
 <textarea id="memoInput" rows="5" cols="30"></textarea>
+<br><br>
+
+<button id="photoButton" type="button">
+    📷 +追加
+</button>
+<br><br>
+
+<div class="photoPreview">
+
+    <img id="previewPhoto">
+
+</div>
+
+<input
+    type="file"
+    id="photoInput"
+    accept="image/*"
+    style="display:none;">
+
 
 <div class="editButtonGrid">
 
@@ -271,6 +290,24 @@ function showDeliveryData() {
 
         delivery.memo || "";
 
+if (
+    delivery.photos &&
+    delivery.photos.length > 0
+) {
+
+    const img =
+        document.getElementById("previewPhoto");
+
+    img.src =
+        delivery.photos[0];
+
+    img.style.display = "block";
+
+    img.dataset.photo =
+        delivery.photos[0];
+
+}
+
 }
 
 function saveMemo() {
@@ -303,6 +340,22 @@ function saveMemo() {
 
         document.getElementById("memoInput").value;
 
+        const preview =
+    document.getElementById("previewPhoto");
+
+    delivery.photos = [];
+
+       if (preview.dataset.photo) {
+
+    delivery.photos.push(
+        preview.dataset.photo
+    );
+
+}
+    delivery.photo =
+    preview.dataset.photo || "";
+
+
     localStorage.setItem(
 
         "deliveries",
@@ -325,7 +378,42 @@ function saveMemo() {
 
 showDeliveryData();
 
+document.getElementById("photoButton")
+.addEventListener("click", function () {
+
+    document.getElementById("photoInput").click();
+
+});
+
+document.getElementById("photoInput")
+.addEventListener("change", function (event) {
+
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function () {
+
+        const img =
+            document.getElementById("previewPhoto");
+
+        img.src = reader.result;
+
+        img.style.display = "block";
+        
+        img.dataset.photo = reader.result;
+      
+        
+    };
+
+    reader.readAsDataURL(file);
+
+});
+
 </script>
+
 
 </body>
 

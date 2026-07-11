@@ -15,8 +15,10 @@
 
 <h1>写真閲覧</h1>
 
-<div style="font-size:100px; text-align:center;">
-📷
+<div class="photoViewer">
+
+    <img id="photoView">
+
 </div>
 
 <div style="text-align:center;">
@@ -38,6 +40,82 @@
 <button onclick="location.href='delete-confirm.html'">
     削除
 </button></div>
+
+<script>
+
+const deliveries =
+    JSON.parse(localStorage.getItem("deliveries")) || [];
+
+const currentDeliveryId =
+    Number(localStorage.getItem("currentDeliveryId"));
+
+const delivery =
+    deliveries.find(function(item){
+
+        return item.id === currentDeliveryId;
+
+    });
+
+if (
+    delivery &&
+    delivery.photos &&
+    delivery.photos.length > 0
+) {
+
+    document.getElementById("photoView").src =
+        delivery.photos[0];
+
+}
+
+let startX = 0;
+let startY = 0;
+
+const SWIPE_BACK_DISTANCE = 300;
+const SWIPE_CHANGE_DISTANCE = 120;
+
+document.addEventListener("touchstart", function(e) {
+
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+
+});
+
+document.addEventListener("touchend", function(e) {
+
+    const endX = e.changedTouches[0].clientX;
+
+    const moveX = startX - endX;
+
+    const endY = e.changedTouches[0].clientY;
+
+    const moveY = startY - endY;
+
+    // 上へ300px以上スワイプしたら戻る
+
+    const SWIPE_BACK_DISTANCE = 300;
+
+if (moveY > SWIPE_BACK_DISTANCE) {
+
+    location.href = "detail.html";
+
+}
+
+if (moveX > SWIPE_CHANGE_DISTANCE) {
+
+    alert("← 左へスワイプ");
+
+}
+
+if (moveX < -SWIPE_CHANGE_DISTANCE) {
+
+    alert("→ 右へスワイプ");
+
+}
+
+});
+
+
+</script>
 
 </body>
 </html>
