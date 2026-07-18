@@ -1752,11 +1752,21 @@ transition: .15s;
 
 .editPage .photoPreview {
 
-    width: 48%;
+    display: grid;
 
-    aspect-ratio: 1 / 1;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    width: 100%;
 
     margin-top: 25px;
+
+}
+
+.editPage .photoItem {
+
+    aspect-ratio: 1 / 1;
 
     border-radius: 20px;
 
@@ -1777,9 +1787,8 @@ transition: .15s;
 
     object-fit: cover;
 
-    display: none;
-
 }
+
 
 /* =========================================
    写真閲覧画面
@@ -1806,5 +1815,44 @@ transition: .15s;
     max-height: 100%;
 
     object-fit: contain;
+
+}
+
+.detailPage .photoPreview {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    width: 100%;
+
+    margin-top: 25px;
+
+}
+
+.detailPage .photoItem {
+
+    aspect-ratio: 1 / 1;
+
+    border-radius: 20px;
+
+    background: #EDEDED;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 6px 12px rgba(0,0,0,.18);
+
+}
+
+.detailPage .photoPreview img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
 
 }
