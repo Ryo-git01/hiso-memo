@@ -90,10 +90,6 @@ document.addEventListener("touchend", function(e) {
 
     const moveY = startY - endY;
 
-    // 上へ300px以上スワイプしたら戻る
-
-    const SWIPE_BACK_DISTANCE = 300;
-
 if (moveY > SWIPE_BACK_DISTANCE) {
 
     location.href = "detail.html";
