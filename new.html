@@ -56,6 +56,48 @@ content = """<!DOCTYPE html>
 
 <br><br>
 
+
+<button
+    id="photoButton"
+    class="photoButton">
+
+    📷 +写真
+
+</button>
+
+<br><br>
+
+<div class="photoPreview">
+
+    <div class="photoItem">
+        <img id="photo1">
+    </div>
+
+    <div class="photoItem">
+        <img id="photo2">
+    </div>
+
+    <div class="photoItem">
+        <img id="photo3">
+    </div>
+
+    <div class="photoItem">
+        <img id="photo4">
+    </div>
+
+</div>
+
+<br>
+
+<input
+    type="file"
+    id="photoInput"
+    accept="image/*"
+    multiple
+    style="display: none;">
+
+<br><br>
+
 <button class="confirmButton" onclick="saveNewDestination()">
 
     ☐確認
@@ -77,6 +119,16 @@ content = """<!DOCTYPE html>
 <script src="compress-photo.js"></script>
 
 <script>
+
+let pendingDelivery =
+
+    JSON.parse(localStorage.getItem("pendingDelivery")) ||
+
+    {
+
+        photos: []
+
+    };
 
 function updateCourseList() {
 
@@ -228,7 +280,9 @@ function saveNewDestination() {
 
         address: address,
 
-        memo: memo
+        memo: memo,
+
+        photos: pendingDelivery.photos
 
     };
 
@@ -351,8 +405,44 @@ function restorePendingDelivery() {
     document.getElementById("memoInput").value =
 
         pendingDelivery.memo || "";
+        
+        showPhotos();
 
     return true;
+    
+}
+
+function showPhotos() {
+
+    const photoElements = [
+
+        document.getElementById("photo1"),
+
+        document.getElementById("photo2"),
+
+        document.getElementById("photo3"),
+
+        document.getElementById("photo4")
+
+    ];
+
+    photoElements.forEach(function(photo) {
+
+        photo.removeAttribute("src");
+
+    });
+
+    if (!Array.isArray(pendingDelivery.photos)) {
+
+        return;
+
+    }
+
+    pendingDelivery.photos.forEach(function(photo, index) {
+
+        photoElements[index].src = photo;
+
+    });
 
 }
 
@@ -367,6 +457,74 @@ if (!restoredPending) {
     restoreLastSelection();
 
 }
+
+document.getElementById("photoButton")
+.addEventListener("click", function () {
+
+    const photoCount =
+
+        Array.isArray(pendingDelivery.photos)
+
+            ? pendingDelivery.photos.length
+
+            : 0;
+
+    if (photoCount >= 4) {
+
+        alert("写真は最大4枚までです。");
+
+        return;
+
+    }
+
+    document.getElementById("photoInput").click();
+
+});
+
+document.getElementById("photoInput")
+.addEventListener("change", async function (event) {
+
+    const selectedPhotos =
+
+        Array.from(event.target.files);
+
+const photoCount =
+
+    Array.isArray(pendingDelivery.photos)
+
+        ? pendingDelivery.photos.length
+
+        : 0;
+
+const remainingCount =
+
+    4 - photoCount;
+
+const targetPhotos =
+
+    selectedPhotos.slice(0, remainingCount);
+
+const compressedPhotos =
+
+    await Promise.all(
+
+        targetPhotos.map(function (file) {
+
+            return compressPhoto(file);
+
+        })
+
+    );
+
+pendingDelivery.photos.push(
+
+    ...compressedPhotos
+
+);
+
+showPhotos();
+
+});
 
 </script>
 

@@ -233,7 +233,7 @@ function updateTownList() {
 
 }
 
-function showPhoto() {
+function showPhotos() {
 
     const photoElements = [
 
@@ -262,6 +262,20 @@ function showPhoto() {
     delivery.photos.forEach(function (photo, index) {
         
         photoElements[index].src = photo;
+
+        photoElements[index].onclick = function () {
+
+    localStorage.setItem(
+
+        "selectedPhotoIndex",
+
+        index
+
+    );
+
+    location.href = "photodelete.html";
+
+};
 
     });
 
@@ -339,7 +353,7 @@ function showDeliveryData() {
 
         delivery.memo || "";
 
-        showPhoto();
+        showPhotos();
 
 }
 
@@ -465,6 +479,8 @@ delivery.photos.push(
     ...compressedPhotos
 
 );
+
+showPhotos();
 
 });
 

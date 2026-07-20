@@ -9,15 +9,15 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>写真観覧</title>
+    <title>写真削除</title>
 
     <link rel="stylesheet" href="style.css">
 
 </head>
 
-<body class="photoPage">
+<body class="photoDeletePage">
 
-<div class="photoViewer">
+<div class="photoDeleteViewer">
 
     <img id="photoView">
 
@@ -25,7 +25,19 @@
 
 <div
     id="photoCounter"
-    class="photoCounter">
+    class="photoDeleteCounter">
+</div>
+
+<div class="photoDeleteButtons">
+
+    <button
+        class="photoDeleteButton"
+        onclick="location.href='photodelete-confirm.html'">
+
+        🗑️削除
+
+    </button>
+
 </div>
 
 <script>
@@ -125,7 +137,7 @@ const DOUBLE_TAP_TIME = 300;
 
 const photoViewer =
 
-    document.querySelector(".photoViewer");
+    document.querySelector(".photoDeleteViewer");
 
 const photoView =
 
@@ -266,7 +278,7 @@ function showNextPhoto() {
 
 function goBack() {
 
-    history.back();
+    location.href = "edit.html";
 
 }
 
@@ -650,6 +662,7 @@ photoViewer.addEventListener(
 showPhoto();
 
 </script>
+
 </body>
 
 </html>

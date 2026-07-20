@@ -135,11 +135,25 @@ function showPhotos() {
 
     }
 
-    delivery.photos.forEach(function(photo, index) {
+delivery.photos.forEach(function(photo, index) {
 
-        photoElements[index].src = photo;
+    photoElements[index].src = photo;
 
-    });
+    photoElements[index].onclick = function () {
+
+        localStorage.setItem(
+
+            "selectedPhotoIndex",
+
+            index
+
+        );
+
+        location.href = "photo.html";
+
+    };
+
+});
 
 }
 
