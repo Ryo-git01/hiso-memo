@@ -739,13 +739,31 @@ background: linear-gradient(
 
 .detailPage #message {
 
-    height: 20px;
+    position: absolute;
 
-    color: green;
+    left: 470px;
 
-    text-align: center;
+    top: 345px;
 
-    margin-top: -10px;
+    margin: 0;
+
+    padding: 12px 22px;
+
+    background: rgba(50, 50, 50, 0.9);
+
+    color: white;
+
+    font-size: 36px;
+
+    font-weight: bold;
+
+    border-radius: 20px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity .2s;
 
 }
 
