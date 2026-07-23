@@ -2125,3 +2125,12 @@ text-shadow:
 
 }
 
+#message {
+
+    font-size: 100px !important;
+
+    color: red !important;
+
+    background: yellow !important;
+
+}
