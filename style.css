@@ -741,27 +741,33 @@ background: linear-gradient(
 
     position: absolute;
 
-    left: 470px;
+    left: 470px;      /* ←右へ移動 */
 
-    top: 345px;
+    top: 340px;       /* ←黄色で囲った位置 */
+
+    width: 420px;
+
+    height: 20px;     /* ←これを戻す */
 
     margin: 0;
 
-    padding: 12px 22px;
+    padding: 0;
 
-    background: rgba(50, 50, 50, 0.9);
-
-    color: white;
-
-    font-size: 36px;
+    font-size: 34px;
 
     font-weight: bold;
 
-    border-radius: 20px;
+    color: black;
 
-    opacity: 0;
+    text-shadow:
+        0 0 8px white,
+        0 0 12px white;
+
+    white-space: nowrap;
 
     pointer-events: none;
+
+    opacity: 0;
 
     transition: opacity .2s;
 

@@ -497,17 +497,15 @@ function copyAddress() {
 
 
             message.textContent =
+    "📋住所をコピーしました";
 
-                "📋住所をコピーしました";
+message.style.opacity = "1";
 
+setTimeout(function () {
 
-            message.style.opacity = "1";
+    message.style.opacity = "0";
 
-            setTimeout(function() {
-
-            message.style.opacity = "0";
-
-            }, 1000);
+}, 1000);
 
 
         })
