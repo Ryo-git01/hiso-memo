@@ -737,6 +737,19 @@ background: linear-gradient(
 
 }
 
+.detailPage #message {
+
+    height: 20px;
+
+    color: green;
+
+    text-align: center;
+
+    margin-top: -10px;
+
+}
+
+
 /* =========================================
    編集画面 タイトル
 ========================================= */
