@@ -2053,7 +2053,7 @@ text-shadow:
         0 2px 6px rgba(47, 123, 255, .18);
 
 }
-.detailPage #message {
+.message {
 
     position: absolute;
 
@@ -2086,51 +2086,5 @@ text-shadow:
     opacity: 0;
 
     transition: opacity .2s;
-
-}
-
-.detailPage #message {
-
-    position: absolute;
-
-    left: 250px;      /* ←右へ移動 */
-
-    top: 430px;       /* ←黄色で囲った位置 */
-
-    width: 450px;
-
-    height: 20px;     /* ←これを戻す */
-
-    margin: 0;
-
-    padding: 0;
-
-    font-size: 5px;
-
-    font-weight: bold;
-
-    color: black;
-
-    text-shadow:
-        0 0 8px white,
-        0 0 12px white;
-
-    white-space: nowrap;
-
-    pointer-events: none;
-
-    opacity: 0;
-
-    transition: opacity .2s;
-
-}
-
-#message {
-
-    font-size: 100px !important;
-
-    color: red !important;
-
-    background: yellow !important;
 
 }
