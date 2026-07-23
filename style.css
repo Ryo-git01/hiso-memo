@@ -741,11 +741,11 @@ background: linear-gradient(
 
     position: absolute;
 
-    left: 470px;      /* ←右へ移動 */
+    left: 250px;      /* ←右へ移動 */
 
-    top: 340px;       /* ←黄色で囲った位置 */
+    top: 430px;       /* ←黄色で囲った位置 */
 
-    width: 420px;
+    width: 450px;
 
     height: 20px;     /* ←これを戻す */
 
@@ -753,7 +753,7 @@ background: linear-gradient(
 
     padding: 0;
 
-    font-size: 34px;
+    font-size: 20px;
 
     font-weight: bold;
 
