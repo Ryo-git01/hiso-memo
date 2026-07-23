@@ -1,10 +1,16 @@
 <!DOCTYPE html>
+
 <html lang="ja">
+
 <head>
+
     <meta charset="UTF-8">
+
     <title>配送先詳細</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
+
 </head>
 
 <body class="detailPage">
@@ -13,74 +19,131 @@
 
 <div class="detailCard">
 
-<p id="address"></p>
-<button class="copyButton" onclick="copyAddress()">
+    <p id="address"></p>
+
+    <button
+        class="copyButton"
+        onclick="copyAddress()">
+
         📋 住所をコピー
-</button>
 
-<p id="message"
-   style="height:20px;
-          color:green;
-          text-align:center;">
-</p>
+    </button>
 
-<h2>配送先メモ：</h2>
+    <p
+        id="message"
+        style="
+            height: 20px;
+            color: green;
+            text-align: center;
+            margin-top: -10px;
+        ">
+    </p>
 
-<div id="memo" class="memo-box"></div>
+    <h2>配送先メモ：</h2>
+
+    <div
+        id="memo"
+        class="memo-box">
+    </div>
 
 </div>
+
 
 <div class="photoPreview">
 
     <div class="photoItem">
+
         <img id="photo1">
+
     </div>
 
     <div class="photoItem">
+
         <img id="photo2">
+
     </div>
 
     <div class="photoItem">
+
         <img id="photo3">
+
     </div>
 
     <div class="photoItem">
+
         <img id="photo4">
+
     </div>
 
 </div>
+
 
 <br>
 
+
 <div class="buttonGrid">
-<button onclick="goBack()">
-🔙戻る
-</button>
 
-<button onclick="location.href='edit.html'">
-✍編集
-</button>
+    <button onclick="goBack()">
 
-<button onclick="goHome()">
-    🏠 ホーム
-</button>
+        🔙戻る
 
-<button onclick="openMap()">
-    📍 Googleマップ</button>
+    </button>
+
+    <button onclick="location.href='edit.html'">
+
+        ✍編集
+
+    </button>
+
+    <button onclick="goHome()">
+
+        🏠 ホーム
+
+    </button>
+
+    <button onclick="openMap()">
+
+        📍 Googleマップ
+
+    </button>
+
 </div>
+
+
+<input
+    id="photoInput"
+    type="file"
+    accept="image/*"
+    multiple
+    hidden>
+
+
+<script src="compress-photo.js"></script>
 
 <script>
 
 const deliveries =
-    JSON.parse(localStorage.getItem("deliveries")) || [];
+
+    JSON.parse(
+        localStorage.getItem("deliveries")
+    ) || [];
+
 
 const currentDeliveryId =
-    Number(localStorage.getItem("currentDeliveryId"));
+
+    Number(
+        localStorage.getItem("currentDeliveryId")
+    );
+
 
 const delivery =
+
     deliveries.find(function(item) {
+
         return item.id === currentDeliveryId;
+
     });
+
 
 function showDeliveryData() {
 
@@ -101,13 +164,16 @@ function showDeliveryData() {
         delivery.town + " " +
         delivery.address;
 
+
     document.getElementById("memo").textContent =
 
         delivery.memo || "";
 
+
     showPhotos();
 
 }
+
 
 function showPhotos() {
 
@@ -123,57 +189,246 @@ function showPhotos() {
 
     ];
 
-    photoElements.forEach(function(photo) {
 
-        photo.removeAttribute("src");
+    photoElements.forEach(function(photoElement) {
+
+        photoElement.removeAttribute("src");
+
+        photoElement.onclick = null;
+
+
+        const photoItem =
+
+            photoElement.parentElement;
+
+
+        const oldAddButton =
+
+            photoItem.querySelector(
+                ".detailPhotoAddButton"
+            );
+
+
+        if (oldAddButton) {
+
+            oldAddButton.remove();
+
+        }
 
     });
 
+
     if (!Array.isArray(delivery.photos)) {
+
+        delivery.photos = [];
+
+    }
+
+
+    delivery.photos.forEach(function(photo, index) {
+
+        if (!photoElements[index]) {
+
+            return;
+
+        }
+
+        photoElements[index].src = photo;
+
+
+        photoElements[index].onclick = function() {
+
+            localStorage.setItem(
+
+                "selectedPhotoIndex",
+
+                index
+
+            );
+
+            location.href = "photo.html";
+
+        };
+
+    });
+
+
+    if (delivery.photos.length < 4) {
+
+        const emptyIndex =
+
+            delivery.photos.length;
+
+
+        const emptyPhotoItem =
+
+            photoElements[emptyIndex].parentElement;
+
+
+        const addButton =
+
+            document.createElement("button");
+
+
+        addButton.type = "button";
+
+
+        addButton.className =
+
+            "detailPhotoAddButton";
+
+
+        addButton.textContent = "＋📷";
+
+
+        addButton.onclick = function() {
+
+            document
+                .getElementById("photoInput")
+                .click();
+
+        };
+
+
+        emptyPhotoItem.appendChild(addButton);
+
+    }
+
+}
+
+
+document
+    .getElementById("photoInput")
+    .addEventListener(
+        "change",
+        async function(event) {
+
+            const selectedPhotos =
+
+                Array.from(
+                    event.target.files
+                );
+
+
+            if (selectedPhotos.length === 0) {
+
+                return;
+
+            }
+
+
+            const photoCount =
+
+                Array.isArray(delivery.photos)
+
+                    ? delivery.photos.length
+
+                    : 0;
+
+
+            const remainingCount =
+
+                4 - photoCount;
+
+
+            if (remainingCount <= 0) {
+
+                alert("写真は最大4枚までです。");
+
+                event.target.value = "";
+
+                return;
+
+            }
+
+
+            const targetPhotos =
+
+                selectedPhotos.slice(
+                    0,
+                    remainingCount
+                );
+
+
+            try {
+
+                const compressedPhotos =
+
+                    await Promise.all(
+
+                        targetPhotos.map(
+                            function(file) {
+
+                                return compressPhoto(file);
+
+                            }
+                        )
+
+                    );
+
+
+                if (!Array.isArray(delivery.photos)) {
+
+                    delivery.photos = [];
+
+                }
+
+
+                delivery.photos.push(
+
+                    ...compressedPhotos
+
+                );
+
+
+                localStorage.setItem(
+
+                    "deliveries",
+
+                    JSON.stringify(deliveries)
+
+                );
+
+
+                showPhotos();
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert("写真の追加に失敗しました。");
+
+            }
+
+
+            event.target.value = "";
+
+        }
+    );
+
+
+function goBack() {
+
+    const previousPage =
+
+        localStorage.getItem("previousPage");
+
+
+    const fromNew =
+
+        localStorage.getItem("fromNew");
+
+
+    if (fromNew === "true") {
+
+        localStorage.removeItem("fromNew");
+
+        location.href = "new.html";
 
         return;
 
     }
 
-delivery.photos.forEach(function(photo, index) {
-
-    photoElements[index].src = photo;
-
-    photoElements[index].onclick = function () {
-
-        localStorage.setItem(
-
-            "selectedPhotoIndex",
-
-            index
-
-        );
-
-        location.href = "photo.html";
-
-    };
-
-});
-
-}
-
-function goBack() {
-
-    const previousPage =
-        localStorage.getItem("previousPage");
-
-    const fromNew =
-    localStorage.getItem("fromNew");
-    
-    if (fromNew === "true") {
-
-    localStorage.removeItem("fromNew");
-
-    location.href = "new.html";
-
-    return;
-
-}
 
     if (previousPage === "search") {
 
@@ -191,6 +446,7 @@ function goBack() {
 
 }
 
+
 function goHome() {
 
     localStorage.removeItem("fromNew");
@@ -199,64 +455,82 @@ function goHome() {
 
 }
 
+
 function openMap() {
 
-    const id =
-        localStorage.getItem("currentDeliveryId");
+    if (!delivery) {
 
-    const deliveries =
-        JSON.parse(localStorage.getItem("deliveries")) || [];
+        return;
 
-    const delivery =
-        deliveries.find(function(d) {
-            return d.id == id;
-        });
+    }
+
 
     const address =
+
         `${delivery.city} ${delivery.town} ${delivery.address}`;
 
+
     window.open(
+
         `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`,
+
         "_blank"
+
     );
 
 }
 
+
 function copyAddress() {
 
-    const id =
-        localStorage.getItem("currentDeliveryId");
+    if (!delivery) {
 
-    const deliveries =
-        JSON.parse(localStorage.getItem("deliveries")) || [];
+        return;
 
-    const delivery =
-        deliveries.find(function(d) {
-            return d.id == id;
-        });
+    }
+
 
     const address =
+
         `${delivery.city} ${delivery.town} ${delivery.address}`;
 
-    navigator.clipboard.writeText(address);
 
-const message =
-    document.getElementById("message");
+    navigator.clipboard
+        .writeText(address)
+        .then(function() {
 
-message.textContent =
-    "📋 住所をコピーしました。";
+            const message =
 
-setTimeout(function() {
+                document.getElementById("message");
 
-    message.textContent = "";
 
-}, 1000);
+            message.textContent =
+
+                "📋 住所をコピーしました。";
+
+
+            setTimeout(function() {
+
+                message.textContent = "";
+
+            }, 1000);
+
+        })
+        .catch(function(error) {
+
+            console.error(error);
+
+            alert("住所をコピーできませんでした。");
+
+        });
 
 }
+
 
 showDeliveryData();
 
 </script>
 
 </body>
+
 </html>

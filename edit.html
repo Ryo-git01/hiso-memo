@@ -50,11 +50,6 @@ edit_html = """<!DOCTYPE html>
 <p>配送先メモ</p>
 
 <textarea id="memoInput" rows="5" cols="30"></textarea>
-<br><br>
-
-<button id="photoButton" type="button">
-    📷 +追加
-</button>
 
 <br><br>
 
@@ -77,12 +72,6 @@ edit_html = """<!DOCTYPE html>
     </div>
 
 </div>
-
-<input
-    type="file"
-    id="photoInput"
-    accept="image/*"
-    style="display:none;">
 
 <div class="editButtonGrid">
 
@@ -107,8 +96,6 @@ edit_html = """<!DOCTYPE html>
 <script src="coursedata.js"></script>
 
 <script src="towndata.js"></script>
-
-<script src="compress-photo.js"></script>
 
 
 <script>
@@ -409,80 +396,6 @@ function saveMemo() {
 }
 
 showDeliveryData();
-
-document.getElementById("photoButton")
-.addEventListener("click", function () {
-
-    const photoCount =
-
-        Array.isArray(delivery.photos)
-
-            ? delivery.photos.length
-
-            : 0;
-
-    if (photoCount >= 4) {
-
-        alert("写真は最大4枚までです。");
-
-        return;
-
-    }
-
-    document.getElementById("photoInput").click();
-
-});
-
-document.getElementById("photoInput")
-.addEventListener("change", async function (event) {
-
-    const selectedPhotos =
-
-        Array.from(event.target.files);
-
-    const photoCount =
-
-        Array.isArray(delivery.photos)
-
-            ? delivery.photos.length
-
-            : 0;
-
-    const remainingCount =
-
-        4 - photoCount;
-
-    const targetPhotos =
-
-        selectedPhotos.slice(0, remainingCount);
-
-const compressedPhotos =
-
-    await Promise.all(
-
-        targetPhotos.map(function (file) {
-
-            return compressPhoto(file);
-
-        })
-
-    );
-
-if (!Array.isArray(delivery.photos)) {
-
-    delivery.photos = [];
-
-}
-
-delivery.photos.push(
-
-    ...compressedPhotos
-
-);
-
-showPhotos();
-
-});
 
 </script>
 
