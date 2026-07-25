@@ -515,6 +515,36 @@ background: linear-gradient(
     box-shadow:
         0 10px 25px rgba(0,0,0,.35);
 
+    position: relative;
+
+}
+
+.detailPage #copyNotification {
+
+    position: absolute;
+
+    top: 420px;
+
+    left: 440px;
+
+    width: 500px;
+
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    opacity: 0;
+
+    font-size: 36px;
+
+    font-weight: bold;
+
+    color: black;
+
+    pointer-events: none;
+
 }
 
 .detailPage h1 {

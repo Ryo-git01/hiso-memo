@@ -29,6 +29,8 @@
 
     </button>
 
+    <div id="copyNotification"></div>
+
 <h2>配送先メモ：</h2>
 
 <div
@@ -479,15 +481,33 @@ function copyAddress() {
 
     }
 
-
     const address =
 
         `${delivery.city} ${delivery.town} ${delivery.address}`;
 
+    const notification =
+
+        document.getElementById("copyNotification");
 
     navigator.clipboard
         .writeText(address)
         .then(function() {
+
+            notification.textContent =
+
+                "📋住所をコピーしました";
+
+            notification.style.opacity = "1";
+
+            clearTimeout(notification.timer);
+
+            notification.timer =
+
+                setTimeout(function() {
+
+                    notification.style.opacity = "0";
+
+                }, 1000);
 
         })
         .catch(function(error) {
