@@ -29,15 +29,6 @@
 
     </button>
 
-<p id="message"></p>
-
-    <h2>配送先メモ：</h2>
-
-    <div
-        id="memo"
-        class="memo-box">
-    </div>
-
 </div>
 
 
@@ -491,22 +482,9 @@ function copyAddress() {
         .writeText(address)
         .then(function() {
 
-            const message =
-
-                document.getElementById("message");
-
-
-            message.textContent =
-    "📋住所をコピーしました";
-
-message.style.opacity = "1";
-
-setTimeout(function () {
-
-    message.style.opacity = "0";
-
-}, 1000);
-
+              showNotification(
+                "📋住所をコピーしました"
+            );
 
         })
         .catch(function(error) {
@@ -519,10 +497,33 @@ setTimeout(function () {
 
 }
 
+function showNotification(text) {
+
+    const notification =
+
+        document.getElementById("notification");
+
+    notification.textContent = text;
+
+    notification.classList.add("show");
+
+    clearTimeout(notification.timer);
+
+    notification.timer =
+
+        setTimeout(function() {
+
+            notification.classList.remove("show");
+
+        }, 1000);
+
+}
 
 showDeliveryData();
 
 </script>
+
+<div id="notification"></div>
 
 </body>
 
