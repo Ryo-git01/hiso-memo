@@ -489,10 +489,6 @@ function copyAddress() {
         .writeText(address)
         .then(function() {
 
-              showNotification(
-                "📋住所をコピーしました"
-            );
-
         })
         .catch(function(error) {
 
@@ -504,33 +500,9 @@ function copyAddress() {
 
 }
 
-function showNotification(text) {
-
-    const notification =
-
-        document.getElementById("notification");
-
-    notification.textContent = text;
-
-    notification.classList.add("show");
-
-    clearTimeout(notification.timer);
-
-    notification.timer =
-
-        setTimeout(function() {
-
-            notification.classList.remove("show");
-
-        }, 1000);
-
-}
-
 showDeliveryData();
 
 </script>
-
-<div id="notification"></div>
 
 </body>
 
