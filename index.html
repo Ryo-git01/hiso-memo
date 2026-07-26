@@ -59,11 +59,6 @@
 </div>
 
 <script>
-function selectCourse(course) {
-    localStorage.setItem("currentCourse", course);
-
-    location.href = "city.html";
-}
 
 function selectSakai() {
     localStorage.setItem("currentCourse", "堺コース");
@@ -99,31 +94,6 @@ function selectIzumi() {
     localStorage.setItem("currentCourse", "和泉コース");
 
     location.href = "izumi-city.html";
-}
-
-function selectSakaiHigashi() {
-    localStorage.setItem("currentCity", "堺市東区");
-    location.href = "town.html";
-}
-
-function selectSakaiNaka() {
-    localStorage.setItem("currentCity", "堺市中区");
-    location.href = "town.html";
-}
-
-function selectSakaiNishi() {
-    localStorage.setItem("currentCity", "堺市西区");
-    location.href = "town.html";
-}
-
-function selectSakaiMinami() {
-    localStorage.setItem("currentCity", "堺市南区");
-    location.href = "town.html";
-}
-
-function selectSakaiMihara() {
-    localStorage.setItem("currentCity", "堺市美原区");
-    location.href = "town.html";
 }
 
 </script>
