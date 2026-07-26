@@ -1755,19 +1755,6 @@ transition: .15s;
    写真観覧画面
 ========================================= */
 
-.detailPage .photoGrid {
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 18px;
-
-    width: 100%;
-
-    margin: 40px 0 60px;
-
-}
 
 .detailPage .photoItem {
 
@@ -1795,25 +1782,6 @@ transition: .15s;
     object-fit: cover;
 
     display: block;
-
-}
-
-.detailPage .photoMore span {
-
-    position: absolute;
-
-    right: 18px;
-
-    bottom: 12px;
-
-    color: white;
-
-    font-size: 55px;
-
-    font-weight: bold;
-
-    text-shadow:
-        0 4px 8px rgba(0,0,0,.8);
 
 }
 
