@@ -22,12 +22,15 @@
 
 <script>
 
+const currentCourse =
+    localStorage.getItem("currentCourse");
+
 const currentCity =
     localStorage.getItem("currentCity");
 
 const towns =
-    townData[currentCity];
-
+    townData[currentCourse][currentCity];
+    
 document.getElementById("cityTitle").textContent =
     currentCity;
 

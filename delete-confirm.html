@@ -21,13 +21,11 @@
 
 <div class="deleteButtons">
 
-    <button class="deleteButton" onclick="deleteDelivery()
-">
-     🗑️削除
+    <button class="deleteButton" onclick="deleteDelivery()">
+        🗑️削除
     </button>
 
-    <button class="backButton" onclick="location.href='edit.html'
-">
+    <button class="backButton" onclick="location.href='edit.html'">
         キャンセル
     </button>
 
@@ -52,7 +50,23 @@ function deleteDelivery() {
         JSON.stringify(deliveries)
     );
 
-    location.href = "address.html";
+    const previousPage =
+        localStorage.getItem("previousPage");
+
+    if (previousPage === "search") {
+
+        location.href = "search.html";
+
+    } else if (previousPage === "address") {
+
+        location.href = "address.html";
+
+    } else {
+
+        location.href = "index.html";
+
+    }
+
 }
 
 </script>

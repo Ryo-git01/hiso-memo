@@ -190,6 +190,10 @@ function updateCityList() {
 
 function updateTownList() {
 
+    const course =
+
+    document.getElementById("courseInput").value;
+
     const city =
 
         document.getElementById("cityInput").value;
@@ -202,7 +206,7 @@ function updateTownList() {
 
     const towns =
 
-        townData[city] || [];
+        townData[course][city] || [];
 
     towns.forEach(function(town) {
 
