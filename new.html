@@ -97,19 +97,16 @@ content = """<!DOCTYPE html>
 
 <br><br>
 
-<button class="confirmButton" onclick="saveNewDestination()">
-
-    ☐確認
-
-</button>
-
-<br><br>
-
-<button class="backButton" onclick="location.href='index.html'">
-
-    🔙戻る
-
-</button>
+<div class="bottomButtons">
+    <button class="backButton"
+            onclick="location.href='index.html'">
+        🔙戻る
+    </button>
+    <button class="confirmButton"
+            onclick="saveNewDestination()">
+        ☑確認
+    </button>
+</div>
 
 <script src="coursedata.js"></script>
 

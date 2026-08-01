@@ -119,6 +119,7 @@ p {
     justify-content: center;
     align-items: center;
     gap: 20px;
+    margin-top: -20px;
 }
 
 .homePage .searchButton,
@@ -627,7 +628,6 @@ p {
 }
 
 .newPage .confirmButton {
-    margin-left: 30px;
     margin-top: 1px;
     width: 40%;
     padding: 30px;
@@ -650,7 +650,6 @@ p {
 }
 
 .newPage .backButton {
-    margin-left: 30px;
     margin-top: 1px;
     width: 40%;
     padding: 30px;
@@ -693,6 +692,15 @@ p {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.newPage .bottomButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    margin: -20px auto 0;
 }
 
 /* ==========================================================

@@ -185,11 +185,15 @@ function updateTownList() {
 
     townSelect.innerHTML = "";
 
+    const course =
+
+        document.getElementById("courseInput").value;
+
     const towns =
 
-        townData[city] || [];
+        townData[course]?.[city] || [];
 
-    towns.forEach(function(town) {
+        towns.forEach(function(town) {
 
         const option =
 
@@ -309,9 +313,14 @@ function showDeliveryData() {
 
     updateTownList();
 
+    const course =
+
+        document.getElementById("courseInput").value;
+
     const towns =
 
-        townData[delivery.city] || [];
+        townData[delivery.course]?.[delivery.city] || [];
+
 
     if ( delivery.town &&
 
