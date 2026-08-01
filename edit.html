@@ -97,7 +97,6 @@ edit_html = """<!DOCTYPE html>
 
 <script src="towndata.js"></script>
 
-
 <script>
 
 const deliveries =
@@ -115,7 +114,7 @@ const delivery =
         return item.id === currentDeliveryId;
 
     });
-    
+
 function updateCourseList() {
 
     const courseSelect =
@@ -247,7 +246,7 @@ function showPhotos() {
     }
 
     delivery.photos.forEach(function (photo, index) {
-        
+
         photoElements[index].src = photo;
 
         photoElements[index].onclick = function () {
@@ -374,7 +373,6 @@ function saveMemo() {
 
         document.getElementById("memoInput").value;
 
-
     localStorage.setItem(
 
         "deliveries",
@@ -398,7 +396,6 @@ function saveMemo() {
 showDeliveryData();
 
 </script>
-
 
 </body>
 

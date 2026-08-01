@@ -1,147 +1,91 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-<meta charset="UTF-8">
-<title>町一覧</title>
-
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>町一覧</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body class="townPage">
-
-<h1 id="cityTitle"></h1>
-
-<div id="townList"></div>
-
-<button class="backButton" onclick="goBack()">
-    🔙戻る
-</button>
-
-<script src="towndata.js"></script>
-
-<script>
-
-const currentCourse =
-    localStorage.getItem("currentCourse");
-
-const currentCity =
-    localStorage.getItem("currentCity");
-
-const towns =
-    townData[currentCourse][currentCity];
-    
-document.getElementById("cityTitle").textContent =
-    currentCity;
-
-const townList =
-    document.getElementById("townList");
-
-const deliveries =
-    JSON.parse(localStorage.getItem("deliveries")) || [];
-
-
-towns.sort(function(a, b) {
-
-    const countA =
-        deliveries.filter(function(delivery) {
-
-            return delivery.city === currentCity &&
-                   delivery.town === a;
-
-        }).length;
-
-    const countB =
-        deliveries.filter(function(delivery) {
-
-            return delivery.city === currentCity &&
-                   delivery.town === b;
-
-        }).length;
-
-if (countA !== countB) {
-
-    return countB - countA;
-
-}
-
-return towns.indexOf(a) - towns.indexOf(b);
-
-});
-
-towns.forEach(function(town) {
-
-    const deliveries =
-        JSON.parse(localStorage.getItem("deliveries")) || [];
-
-    const count =
-        deliveries.filter(function(delivery) {
-
-            return delivery.city === currentCity &&
-                   delivery.town === town;
-
-        }).length;
-
-    townList.innerHTML += `
-        <button class="townButton"
-                onclick="selectTown('${town}')">
-            ${town}${count > 0 ? "（" + count + "）" : ""}
-        </button>
-
-        <br><br>
-    `;
-
-});
-
-function selectTown(town) {
-
-    localStorage.setItem(
-        "currentTown",
-        town
-    );
-
-    location.href = "address.html";
-
-}
-
-function goBack() {
-
-    const currentCity =
-        localStorage.getItem("currentCity");
-
-    const currentCourse =
-        localStorage.getItem("currentCourse");
-
-    if (currentCity.startsWith("堺市")) {
-
-        location.href = "sakai-ward.html";
-
-    } else if (currentCourse === "奈良北コース") {
-
-        location.href = "nara-city.html";
-
-    } else if (currentCourse === "和泉コース") {
-
-        location.href = "izumi-city.html";
-
-    }else if (currentCourse === "岸和田コース") {
-
-        location.href = "kishiwada-city.html";
-
-    }else if (currentCourse === "八尾コース") {
-
-        location.href = "yao-city.html";
-
-    }else if (currentCourse === "堺コース") {
-
-        location.href = "sakai-city.html";
-
-    }else if (currentCourse === "奈良南コース") {
-
-        location.href = "nara-south.html";
-
-    }
-
-}
-
-</script>
+    <h1 id="cityTitle"></h1>
+    <div id="townList"></div>
+    <button class="backButton"
+            onclick="goBack()">
+        🔙戻る
+    </button>
+    <script src="towndata.js"></script>
+    <script>
+        const currentCourse =
+            localStorage.getItem("currentCourse");
+        const currentCity =
+            localStorage.getItem("currentCity");
+        const towns =
+            townData[currentCourse][currentCity];
+        document.getElementById("cityTitle").textContent =
+            currentCity;
+        const townList =
+            document.getElementById("townList");
+        const deliveries =
+            JSON.parse(localStorage.getItem("deliveries")) || [];
+        towns.sort(function(deliveryA, deliveryB) {
+            const countA =
+                deliveries.filter(function(delivery) {
+                    return delivery.city === currentCity &&
+                           delivery.town === deliveryA;
+                }).length;
+            const countB =
+                deliveries.filter(function(delivery) {
+                    return delivery.city === currentCity &&
+                           delivery.town === deliveryB;
+                }).length;
+            if (countA !== countB) {
+                return countB - countA;
+            }
+            return towns.indexOf(deliveryA) - towns.indexOf(deliveryB);
+        });
+        towns.forEach(function(town) {
+            const deliveries =
+                JSON.parse(localStorage.getItem("deliveries")) || [];
+            const count =
+                deliveries.filter(function(delivery) {
+                    return delivery.city === currentCity &&
+                           delivery.town === town;
+                }).length;
+            townList.innerHTML += `
+                <button class="townButton"
+                        onclick="selectTown('${town}')">
+                    ${town}${count > 0 ? "（" + count + "）" : ""}
+                </button>
+                <br><br>
+            `;
+        });
+        function selectTown(town) {
+            localStorage.setItem(
+                "currentTown",
+                town
+            );
+            location.href = "address.html";
+        }
+        function goBack() {
+            const currentCity =
+                localStorage.getItem("currentCity");
+            const currentCourse =
+                localStorage.getItem("currentCourse");
+            if (currentCity.startsWith("堺市")) {
+                location.href = "sakai-ward.html";
+            } else if (currentCourse === "奈良北コース") {
+                location.href = "nara-city.html";
+            } else if (currentCourse === "和泉コース") {
+                location.href = "izumi-city.html";
+            } else if (currentCourse === "岸和田コース") {
+                location.href = "kishiwada-city.html";
+            } else if (currentCourse === "八尾コース") {
+                location.href = "yao-city.html";
+            } else if (currentCourse === "堺コース") {
+                location.href = "sakai-city.html";
+            } else if (currentCourse === "奈良南コース") {
+                location.href = "nara-south.html";
+            }
+        }
+    </script>
+</body>
+</html>

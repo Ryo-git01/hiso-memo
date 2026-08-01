@@ -65,7 +65,6 @@ if (
 
 }
 
-
 /* ================================
    写真の拡大・移動状態
 ================================ */
@@ -79,7 +78,6 @@ let translateY = 0;
 const MIN_SCALE = 1;
 
 const MAX_SCALE = 4;
-
 
 /* ================================
    タッチ操作の状態
@@ -105,7 +103,6 @@ let initialPinchDistance = 0;
 
 let initialPinchScale = 1;
 
-
 /* ================================
    スワイプ・タップ設定
 ================================ */
@@ -117,7 +114,6 @@ const SWIPE_CHANGE_DISTANCE = 60;
 const TAP_MOVE_LIMIT = 15;
 
 const DOUBLE_TAP_TIME = 300;
-
 
 /* ================================
    画面の要素
@@ -134,7 +130,6 @@ const photoView =
 photoViewer.style.touchAction = "none";
 
 photoView.style.transformOrigin = "center center";
-
 
 /* ================================
    写真を1枚表示する
@@ -186,7 +181,6 @@ function showPhoto() {
 
 }
 
-
 /* ================================
    写真の倍率と位置を画面へ反映する
 ================================ */
@@ -199,7 +193,6 @@ function applyPhotoTransform() {
          scale(${scale})`;
 
 }
-
 
 /* ================================
    写真を100％表示へ戻す
@@ -216,7 +209,6 @@ function resetPhotoView() {
     applyPhotoTransform();
 
 }
-
 
 /* ================================
    前の写真を表示する
@@ -235,7 +227,6 @@ function showPreviousPhoto() {
     showPhoto();
 
 }
-
 
 /* ================================
    次の写真を表示する
@@ -259,7 +250,6 @@ function showNextPhoto() {
 
 }
 
-
 /* ================================
    前の画面へ戻る
 ================================ */
@@ -269,7 +259,6 @@ function goBack() {
     history.back();
 
 }
-
 
 /* ================================
    2本の指の距離を計算する
@@ -294,7 +283,6 @@ function getTouchDistance(touch1, touch2) {
     );
 
 }
-
 
 /* ================================
    ダブルタップで段階的に拡大する
@@ -379,7 +367,6 @@ photoViewer.addEventListener(
         passive: false
     }
 );
-
 
 /* ================================
    指を動かしているとき
@@ -486,7 +473,6 @@ photoViewer.addEventListener(
     }
 );
 
-
 /* ================================
    指を離したとき
 ================================ */
@@ -543,7 +529,6 @@ photoViewer.addEventListener(
 
             Date.now() - touchStartTime;
 
-
         /* ダブルタップ判定 */
 
         if (
@@ -575,7 +560,6 @@ photoViewer.addEventListener(
 
         }
 
-
         /* 拡大中の操作 */
 
         if (scale > 1) {
@@ -596,7 +580,6 @@ photoViewer.addEventListener(
             return;
 
         }
-
 
         /* 通常表示中の左右スワイプ */
 
@@ -626,7 +609,6 @@ photoViewer.addEventListener(
     }
 );
 
-
 /* ================================
    タッチ操作が途中で中断されたとき
 ================================ */
@@ -642,7 +624,6 @@ photoViewer.addEventListener(
     }
 );
 
-
 /* ================================
    ページを開いたときの最初の処理
 ================================ */
@@ -653,3 +634,5 @@ showPhoto();
 </body>
 
 </html>
+photo_formatted.html
+HTML

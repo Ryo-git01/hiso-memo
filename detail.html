@@ -4,6 +4,7 @@
 
 <head>
 
+
     <meta charset="UTF-8">
 
     <title>配送先詳細</title>
@@ -40,7 +41,6 @@
 
 </div>
 
-
 <div class="photoPreview">
 
     <div class="photoItem">
@@ -69,9 +69,7 @@
 
 </div>
 
-
 <br>
-
 
 <div class="buttonGrid">
 
@@ -101,7 +99,6 @@
 
 </div>
 
-
 <input
     id="photoInput"
     type="file"
@@ -109,10 +106,10 @@
     multiple
     hidden>
 
-
 <script src="compress-photo.js"></script>
 
 <script>
+
 
 const deliveries =
 
@@ -120,13 +117,11 @@ const deliveries =
         localStorage.getItem("deliveries")
     ) || [];
 
-
 const currentDeliveryId =
 
     Number(
         localStorage.getItem("currentDeliveryId")
     );
-
 
 const delivery =
 
@@ -135,7 +130,6 @@ const delivery =
         return item.id === currentDeliveryId;
 
     });
-
 
 function showDeliveryData() {
 
@@ -156,16 +150,13 @@ function showDeliveryData() {
         delivery.town + " " +
         delivery.address;
 
-
     document.getElementById("memo").textContent =
 
         delivery.memo || "";
 
-
     showPhotos();
 
 }
-
 
 function showPhotos() {
 
@@ -181,25 +172,21 @@ function showPhotos() {
 
     ];
 
-
     photoElements.forEach(function(photoElement) {
 
         photoElement.removeAttribute("src");
 
         photoElement.onclick = null;
 
-
         const photoItem =
 
             photoElement.parentElement;
-
 
         const oldAddButton =
 
             photoItem.querySelector(
                 ".detailPhotoAddButton"
             );
-
 
         if (oldAddButton) {
 
@@ -209,13 +196,11 @@ function showPhotos() {
 
     });
 
-
     if (!Array.isArray(delivery.photos)) {
 
         delivery.photos = [];
 
     }
-
 
     delivery.photos.forEach(function(photo, index) {
 
@@ -226,7 +211,6 @@ function showPhotos() {
         }
 
         photoElements[index].src = photo;
-
 
         photoElements[index].onclick = function() {
 
@@ -244,34 +228,27 @@ function showPhotos() {
 
     });
 
-
     if (delivery.photos.length < 4) {
 
         const emptyIndex =
 
             delivery.photos.length;
 
-
         const emptyPhotoItem =
 
             photoElements[emptyIndex].parentElement;
-
 
         const addButton =
 
             document.createElement("button");
 
-
         addButton.type = "button";
-
 
         addButton.className =
 
             "detailPhotoAddButton";
 
-
         addButton.textContent = "＋📷";
-
 
         addButton.onclick = function() {
 
@@ -281,13 +258,11 @@ function showPhotos() {
 
         };
 
-
         emptyPhotoItem.appendChild(addButton);
 
     }
 
 }
-
 
 document
     .getElementById("photoInput")
@@ -301,13 +276,11 @@ document
                     event.target.files
                 );
 
-
             if (selectedPhotos.length === 0) {
 
                 return;
 
             }
-
 
             const photoCount =
 
@@ -317,11 +290,9 @@ document
 
                     : 0;
 
-
             const remainingCount =
 
                 4 - photoCount;
-
 
             if (remainingCount <= 0) {
 
@@ -333,14 +304,12 @@ document
 
             }
 
-
             const targetPhotos =
 
                 selectedPhotos.slice(
                     0,
                     remainingCount
                 );
-
 
             try {
 
@@ -358,20 +327,17 @@ document
 
                     );
 
-
                 if (!Array.isArray(delivery.photos)) {
 
                     delivery.photos = [];
 
                 }
 
-
                 delivery.photos.push(
 
                     ...compressedPhotos
 
                 );
-
 
                 localStorage.setItem(
 
@@ -380,7 +346,6 @@ document
                     JSON.stringify(deliveries)
 
                 );
-
 
                 showPhotos();
 
@@ -392,12 +357,10 @@ document
 
             }
 
-
             event.target.value = "";
 
         }
     );
-
 
 function goBack() {
 
@@ -405,11 +368,9 @@ function goBack() {
 
         localStorage.getItem("previousPage");
 
-
     const fromNew =
 
         localStorage.getItem("fromNew");
-
 
     if (fromNew === "true") {
 
@@ -420,7 +381,6 @@ function goBack() {
         return;
 
     }
-
 
     if (previousPage === "search") {
 
@@ -438,7 +398,6 @@ function goBack() {
 
 }
 
-
 function goHome() {
 
     localStorage.removeItem("fromNew");
@@ -446,7 +405,6 @@ function goHome() {
     location.href = "index.html";
 
 }
-
 
 function openMap() {
 
@@ -456,11 +414,9 @@ function openMap() {
 
     }
 
-
     const address =
 
         `${delivery.city} ${delivery.town} ${delivery.address}`;
-
 
     window.open(
 
@@ -471,7 +427,6 @@ function openMap() {
     );
 
 }
-
 
 function copyAddress() {
 
@@ -519,6 +474,7 @@ function copyAddress() {
         });
 
 }
+
 
 showDeliveryData();
 
